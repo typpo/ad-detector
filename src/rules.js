@@ -43,4 +43,14 @@ window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'gawker.com': [
+    {
+      match: function() {
+        return document.getElementsByClassName('sponsored-label').length > 0;
+      },
+      getSponsor: function() {
+        return null;
+      },
+    },
+  ],
 };
