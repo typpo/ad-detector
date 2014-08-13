@@ -53,4 +53,14 @@ window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'slate.com': [
+    {
+      match: function() {
+        return document.getElementsByClassName('provided-by').length > 0;
+      },
+      getSponsor: function() {
+        return null;
+      },
+    },
+  ],
 };
