@@ -49,4 +49,8 @@ function addWarningBanner(sponsorName) {
       'paid for by ' + (sponsorName || 'a sponsor');
   textElt.innerHTML = text;
   banner.appendChild(textElt);
+
+  banner.onclick = function() {
+    this.remove();
+  }
 }
