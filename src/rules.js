@@ -1,3 +1,5 @@
+'use strict';
+
 /*
  * Rules for identifying ads on individual domains.
  *
@@ -73,6 +75,21 @@ window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'ad-assets.nytimes.com': [
+    {
+      // Example: http://ad-assets.nytimes.com/paidpost/dell/will-millennials-ever-completely-shun-the-office.html
+      match: function() {
+        return true;
+      },
+      getSponsor: function() {
+        var paidElts = document.getElementsByClassName('paid-head-tag');
+        if (paidElts.length < 1) {
+          return null;
+        }
+        return paidElts[0].innerHTML.replace('PAID FOR AND POSTED BY ', '');
+      },
+    },
+  ],
   'slate.com': [
     {
       // Example: http://www.slate.com/articles/news_and_politics/uc/2014/06/living_forever_the_right_way.html
@@ -108,6 +125,21 @@ window.AD_DETECTOR_RULES = {
         }
         var text = elts[0].lastChild.textContent;
         return text.slice(3, text.lastIndexOf('·') - 1);
+      },
+    },
+  ],
+  'vanityfair.com': [
+    {
+      // Example: http://www.vanityfair.com/online/oscars/2013/12/hennessy-sir-malcolm-campbell-speed-racer
+      match: function() {
+        var elts = document.getElementsByClassName('rubric');
+        if (elts.length < 1) {
+          return false;
+        }
+        return elts[0].innerHTML === 'SPONSOR CONTENT';
+      },
+      getSponsor: function() {
+        return null;
       },
     },
   ],

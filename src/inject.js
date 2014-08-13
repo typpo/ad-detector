@@ -1,3 +1,5 @@
+'use strict';
+
 /*
  * Ad Detector (C2014 Ian Webster, MIT License)
  *
