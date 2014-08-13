@@ -1,4 +1,10 @@
-/* Rules for identifying ads on individual domains. */
+/*
+ * Rules for identifying ads on individual domains.
+ *
+ * match: Returns true if the current article is sponsored.
+ * getSponsor: Returns the name of the sponsor. Null if unknown.
+ *
+ */
 window.AD_DETECTOR_RULES = {
   'buzzfeed.com': [
     {
@@ -58,7 +64,6 @@ window.AD_DETECTOR_RULES = {
         return document.getElementsByClassName('sponsor-warning').length > 0;
       },
       getSponsor: function() {
-        // Too hard to tell reliably, for now.
         return null;
       },
     },
