@@ -24,6 +24,16 @@ window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'deadspin.com': [
+    {
+      match: function() {
+        return document.getElementsByClassName('sponsored-label').length > 0;
+      },
+      getSponsor: function() {
+        return null;
+      },
+    },
+  ],
   'gawker.com': [
     {
       match: function() {
