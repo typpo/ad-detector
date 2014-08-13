@@ -40,9 +40,13 @@ function getRuleForPage() {
 
 function addWarningBanner(sponsorName) {
   // Puts a big red banner at the top of the page.
+  var body = document.getElementsByTagName('body')[0];
   var banner = document.createElement('div');
   banner.className = 'ad-detector-css-reset ad-detector-banner';
-  document.getElementsByTagName('body')[0].appendChild(banner);
+  body.appendChild(banner);
+
+  // Give room for banner to show. This doesn't work on all sites.
+  body.style.marginTop = '65px';
 
   var textElt = document.createElement('span');
   var text = '[AdDetector] This article is an advertisement ' +
