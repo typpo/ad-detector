@@ -5,7 +5,6 @@
  * page.
  */
 
-
 chrome.extension.sendMessage({}, function(response) {
   var readyStateCheckInterval = setInterval(function() {
     if (document.readyState === "complete") {
@@ -17,64 +16,37 @@ chrome.extension.sendMessage({}, function(response) {
 
 
 function run() {
-  var scanner = RULES[window.location.host];
-  if (!scanner) {
+  var scanners = getRuleForPage();
+  if (!scanners) {
     return;
   }
 
-  if (scanner.match()) {
-    addWarningBanner();
+  for (var i=0; i < scanners.length; i++) {
+    var scanner = scanners[i];
+    if (scanner.match()) {
+      addWarningBanner(scanner.getSponsor());
+      break;
+    }
   }
 }
 
 
-function addWarningBanner() {
+function getRuleForPage() {
+  var domain = window.location.host;
+  domain = domain.replace('www.', '');
+  return AD_DETECTOR_RULES[domain];
+}
+
+
+function addWarningBanner(sponsorName) {
   // Puts a big red banner at the top of the page.
   var banner = document.createElement('div');
   banner.className = 'ad-detector-banner';
   document.getElementsByTagName('body')[0].appendChild(banner);
 
-  var text = document.createElement('span');
-  text.innerHTML = 'FYI: This article was paid for by a sponsor. ' +
-      'You are reading an advertisement.'
-  banner.appendChild(text);
+  var textElt = document.createElement('span');
+  var text = '[AdDetector] This article is an advertisement ' +
+      'paid for by ' + (sponsorName || 'a sponsor');
+  textElt.innerHTML = text;
+  banner.appendChild(textElt);
 }
-
-
-/* Rules for identifying ads on individual domains. */
-var RULES = {
-  'nytimes.com': [
-    {
-      match: function() {
-        // paidpost.nytimes.com
-        return window.location.href.indexOf('paidpost.') > -1;
-      },
-      getSponsor: function() {
-        // TODO
-        return 'Unknown';
-      },
-    },
-  ],
-  'theatlantic.com': [
-    {
-      match: function() {
-        // TODO
-        return true;
-      },
-      getSponsor: function() {
-        return 'Unknown';
-      },
-    },
-  ],
-  'ianww.com': [
-    {
-      match: function() {
-        return true;
-      },
-      getSponsor: function() {
-        return 'Unknown';
-      },
-    },
-  ],
-
-};
