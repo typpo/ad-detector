@@ -5,8 +5,6 @@
  *
  * match: Returns true if the current article is sponsored.
  * getSponsor: Returns the name of the sponsor. Null if unknown.
- *
- * TODO Sites I can't detect yet: mashable, fastcompany.
  */
 window.AD_DETECTOR_RULES = {
   'ad-assets.nytimes.com': [
@@ -48,6 +46,17 @@ window.AD_DETECTOR_RULES = {
       // Example: http://deadspin.com/5969545/exclusive-could-this-be-chris-pauls-secret-twin-brother
       match: function() {
         return document.getElementsByClassName('sponsored-label').length > 0;
+      },
+      getSponsor: function() {
+        return null;
+      },
+    },
+  ],
+  'fastcompany.com': [
+    {
+      // Example: http://www.fastcompany.com/3002725/infographic-upss-2012-change-supply-chain-survey
+      match: function() {
+        return window.bootstrap_obj ? window.bootstrap_obj.sponsored : false;
       },
       getSponsor: function() {
         return null;
