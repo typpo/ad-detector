@@ -1,7 +1,5 @@
-chrome/src/inject*
-chrome/src/jquery*
-firefox/data/inject*
-firefox/data/jquery*
+chrome/src/*
+firefox/data/*
 *.xpi
 *.zip
 *debuglog.txt
