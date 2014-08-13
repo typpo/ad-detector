@@ -41,7 +41,7 @@ function getRuleForPage() {
 function addWarningBanner(sponsorName) {
   // Puts a big red banner at the top of the page.
   var banner = document.createElement('div');
-  banner.className = 'ad-detector-banner';
+  banner.className = 'ad-detector-css-reset ad-detector-banner';
   document.getElementsByTagName('body')[0].appendChild(banner);
 
   var textElt = document.createElement('span');
