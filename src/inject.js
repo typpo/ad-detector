@@ -7,36 +7,11 @@
  * page.
  */
 
-chrome.extension.sendMessage({}, function(response) {
-  var readyStateCheckInterval = setInterval(function() {
-    if (document.readyState === "complete") {
-      clearInterval(readyStateCheckInterval);
-      run();
-    }
-  }, 10);
-});
-
-
-function run() {
-  var scanners = getRuleForPage();
-  if (!scanners) {
-    return;
-  }
-
-  for (var i=0; i < scanners.length; i++) {
-    var scanner = scanners[i];
-    if (scanner.match()) {
-      addWarningBanner(scanner.getSponsor());
-      break;
-    }
-  }
-}
-
 
 function getRuleForPage() {
   var domain = window.location.host;
   domain = domain.replace('www.', '');
-  return AD_DETECTOR_RULES[domain];
+  return window.AD_DETECTOR_RULES[domain];
 }
 
 
@@ -60,3 +35,22 @@ function addWarningBanner(sponsorName) {
     this.remove();
   }
 }
+
+
+(function run() {
+  // So rules can check 3rd-party window variables.
+  var scanners = getRuleForPage();
+  if (!scanners) {
+    return;
+  }
+
+  for (var i=0; i < scanners.length; i++) {
+    var scanner = scanners[i];
+    if (scanner.match()) {
+      addWarningBanner(scanner.getSponsor());
+      break;
+    }
+  }
+})();
+
+

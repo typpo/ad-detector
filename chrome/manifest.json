@@ -14,6 +14,10 @@
     "https://*/*",
     "http://*/*"
   ],
+  "web_accessible_resources": [
+    "src/rules.js",
+    "src/inject.js"
+  ],
   "content_scripts": [
     {
       "matches": [
@@ -21,8 +25,7 @@
         "http://*/*"
       ],
       "js": [
-        "src/rules.js",
-        "src/inject.js"
+        "src/main.js"
       ],
       "css": [
         "src/inject.css"

@@ -6,8 +6,24 @@
  * match: Returns true if the current article is sponsored.
  * getSponsor: Returns the name of the sponsor. Null if unknown.
  *
+ * TODO Sites I can't detect yet: mashable, fastcompany.
  */
 window.AD_DETECTOR_RULES = {
+  'ad-assets.nytimes.com': [
+    {
+      // Example: http://ad-assets.nytimes.com/paidpost/dell/will-millennials-ever-completely-shun-the-office.html
+      match: function() {
+        return true;
+      },
+      getSponsor: function() {
+        var paidElts = document.getElementsByClassName('paid-head-tag');
+        if (paidElts.length < 1) {
+          return null;
+        }
+        return paidElts[0].innerHTML.replace('PAID FOR AND POSTED BY ', '');
+      },
+    },
+  ],
   'buzzfeed.com': [
     {
       // Example: http://www.buzzfeed.com/bravo/ways-to-up-your-online-dating-game
@@ -75,18 +91,15 @@ window.AD_DETECTOR_RULES = {
       },
     },
   ],
-  'ad-assets.nytimes.com': [
+  'mashable.com': [
     {
-      // Example: http://ad-assets.nytimes.com/paidpost/dell/will-millennials-ever-completely-shun-the-office.html
+      // Example: http://mashable.com/2013/03/12/dog-mans-best-friend/
       match: function() {
-        return true;
+        return window.__o.content_source_type === 'Supported';
       },
       getSponsor: function() {
-        var paidElts = document.getElementsByClassName('paid-head-tag');
-        if (paidElts.length < 1) {
-          return null;
-        }
-        return paidElts[0].innerHTML.replace('PAID FOR AND POSTED BY ', '');
+        var source = window.__o.content_source_name;
+        return source[0].toUpperCase() + source.slice(1);
       },
     },
   ],
