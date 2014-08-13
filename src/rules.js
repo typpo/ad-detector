@@ -9,7 +9,7 @@
 window.AD_DETECTOR_RULES = {
   'ad-assets.nytimes.com': [
     {
-      // Example: http://ad-assets.nytimes.com/paidpost/dell/will-millennials-ever-completely-shun-the-office.html
+      example: 'http://ad-assets.nytimes.com/paidpost/dell/will-millennials-ever-completely-shun-the-office.html',
       match: function() {
         return true;
       },
@@ -24,7 +24,7 @@ window.AD_DETECTOR_RULES = {
   ],
   'buzzfeed.com': [
     {
-      // Example: http://www.buzzfeed.com/bravo/ways-to-up-your-online-dating-game
+      example: 'http://www.buzzfeed.com/bravo/ways-to-up-your-online-dating-game',
       match: function() {
         var elts = document.getElementsByClassName('author_title');
         if (elts.length > 0) {
@@ -43,7 +43,7 @@ window.AD_DETECTOR_RULES = {
   ],
   'deadspin.com': [
     {
-      // Example: http://deadspin.com/5969545/exclusive-could-this-be-chris-pauls-secret-twin-brother
+      example: 'http://deadspin.com/5969545/exclusive-could-this-be-chris-pauls-secret-twin-brother',
       match: function() {
         return document.getElementsByClassName('sponsored-label').length > 0;
       },
@@ -54,7 +54,7 @@ window.AD_DETECTOR_RULES = {
   ],
   'fastcompany.com': [
     {
-      // Example: http://www.fastcompany.com/3002725/infographic-upss-2012-change-supply-chain-survey
+      example: 'http://www.fastcompany.com/3002725/infographic-upss-2012-change-supply-chain-survey',
       match: function() {
         return window.bootstrap_obj ? window.bootstrap_obj.sponsored : false;
       },
@@ -65,7 +65,7 @@ window.AD_DETECTOR_RULES = {
   ],
   'forbes.com': [
     {
-      // Example: http://www.forbes.com/sites/fidelity/2014/04/29/should-you-accept-your-employers-pension-buyout-offer/
+      example: 'http://www.forbes.com/sites/fidelity/2014/04/29/should-you-accept-your-employers-pension-buyout-offer/',
       match: function() {
         return document.getElementsByClassName('brandvoice').length > 0;
       },
@@ -76,7 +76,7 @@ window.AD_DETECTOR_RULES = {
   ],
   'gawker.com': [
     {
-      // Example: http://gawker.com/5974129/how-to-transform-into-a-total-nerd-babe/
+      example: 'http://gawker.com/5974129/how-to-transform-into-a-total-nerd-babe/',
       match: function() {
         return document.getElementsByClassName('sponsored-label').length > 0;
       },
@@ -87,7 +87,7 @@ window.AD_DETECTOR_RULES = {
   ],
   'paidpost.nytimes.com': [
     {
-      // Example: http://paidpost.nytimes.com/vacheron-constantin/transmitting-craftsmanship.html
+      example: 'http://paidpost.nytimes.com/vacheron-constantin/transmitting-craftsmanship.html',
       match: function() {
         return true;
       },
@@ -102,7 +102,7 @@ window.AD_DETECTOR_RULES = {
   ],
   'mashable.com': [
     {
-      // Example: http://mashable.com/2013/03/12/dog-mans-best-friend/
+      example: 'http://mashable.com/2013/03/12/dog-mans-best-friend/',
       match: function() {
         return window.__o.content_source_type === 'Supported';
       },
@@ -114,7 +114,7 @@ window.AD_DETECTOR_RULES = {
   ],
   'slate.com': [
     {
-      // Example: http://www.slate.com/articles/news_and_politics/uc/2014/06/living_forever_the_right_way.html
+      example: 'http://www.slate.com/articles/news_and_politics/uc/2014/06/living_forever_the_right_way.html',
       match: function() {
         return document.getElementsByClassName('provided-by').length > 0;
       },
@@ -125,7 +125,7 @@ window.AD_DETECTOR_RULES = {
   ],
   'theatlantic.com': [
     {
-      // Example: http://www.theatlantic.com/sponsored/ibm-big-data/big-data-grows-new-role-emerges-chief-data-officer/102/
+      example: 'http://www.theatlantic.com/sponsored/ibm-big-data/big-data-grows-new-role-emerges-chief-data-officer/102/',
       match: function() {
         return document.getElementsByClassName('sponsor-warning').length > 0;
       },
@@ -136,7 +136,7 @@ window.AD_DETECTOR_RULES = {
   ],
   'theonion.com': [
     {
-      // Example: http://www.theonion.com/sponsored/woman-going-to-take-quick-break-after-filling-out,85/
+      example: 'http://www.theonion.com/sponsored/woman-going-to-take-quick-break-after-filling-out,85/',
       match: function() {
         return document.getElementById('sponsored-box') !== null;
       },
@@ -152,7 +152,7 @@ window.AD_DETECTOR_RULES = {
   ],
   'vanityfair.com': [
     {
-      // Example: http://www.vanityfair.com/online/oscars/2013/12/hennessy-sir-malcolm-campbell-speed-racer
+      example: 'http://www.vanityfair.com/online/oscars/2013/12/hennessy-sir-malcolm-campbell-speed-racer',
       match: function() {
         var elts = document.getElementsByClassName('rubric');
         if (elts.length < 1) {
