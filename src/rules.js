@@ -1,30 +1,5 @@
 /* Rules for identifying ads on individual domains. */
 window.AD_DETECTOR_RULES = {
-  'paidpost.nytimes.com': [
-    {
-      match: function() {
-        return true;
-      },
-      getSponsor: function() {
-        var paidElts = document.getElementsByClassName('paid-top-border-txt');
-        if (paidElts.length < 1) {
-          return null;
-        }
-        return paidElts[0].innerHTML.replace('PAID FOR AND POSTED BY ', '');
-      },
-    },
-  ],
-  'theatlantic.com': [
-    {
-      match: function() {
-        return document.getElementsByClassName('sponsor-warning').length > 0;
-      },
-      getSponsor: function() {
-        // Too hard to tell reliably, for now.
-        return null;
-      },
-    },
-  ],
   'buzzfeed.com': [
     {
       match: function() {
@@ -53,12 +28,37 @@ window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'paidpost.nytimes.com': [
+    {
+      match: function() {
+        return true;
+      },
+      getSponsor: function() {
+        var paidElts = document.getElementsByClassName('paid-top-border-txt');
+        if (paidElts.length < 1) {
+          return null;
+        }
+        return paidElts[0].innerHTML.replace('PAID FOR AND POSTED BY ', '');
+      },
+    },
+  ],
   'slate.com': [
     {
       match: function() {
         return document.getElementsByClassName('provided-by').length > 0;
       },
       getSponsor: function() {
+        return null;
+      },
+    },
+  ],
+  'theatlantic.com': [
+    {
+      match: function() {
+        return document.getElementsByClassName('sponsor-warning').length > 0;
+      },
+      getSponsor: function() {
+        // Too hard to tell reliably, for now.
         return null;
       },
     },
