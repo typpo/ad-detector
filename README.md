@@ -1,0 +1,21 @@
+# AdDetector
+
+AdDetector is a Chrome extension and Firefox addon that detects articles that were paid for by sponsors.  In other words, it detects advertisements that are part of the "native advertising" or "sponsored articles" trend, which make money by pretending to be legitimate journalism and hiding the fact that they are ads.
+
+## Install for Chrome or Firefox
+
+Get the latest download links on the [AdDetector site](http://ianww.com/ad-detector) (soon).
+
+## Running from source
+
+Run `./setup_hardlinks` before you load the Chrome or Firefox plugins.  This will connect the generic code in `src/` to the proper locations in the browser-specific subdirectories.  To make changes to injected code, you only need to edit in `src/` directly.
+
+## License (MIT)
+
+Copyright (C) 2014 by Ian Webster
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
