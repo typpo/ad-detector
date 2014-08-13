@@ -1,6 +1,6 @@
 
 .ad-detector-banner {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
 
@@ -14,4 +14,6 @@
   text-align: center;
   padding-top: 25px;
   z-index: 2147483647;
+
+  cursor: pointer;
 }
