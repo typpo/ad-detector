@@ -6,13 +6,17 @@ This method of advertising presents ads as journalism or unbiased articles.  It'
 
 Stories may be marked as sponsored, but sometimes it's very subtle because the whole point is that users don't know it's an ad.  Well-known publications like NYT, The Atlantic, Gawker, and so on are doing this.
 
-## Install for Chrome or Firefox
+## Install for Chrome
 
-Get the latest download links on the [AdDetector site](http://ianww.com/ad-detector) (not yet, but soon).
+Get the latest download links on the [AdDetector site](http://ianww.com/ad-detector).  Firefox extension coming soon.
 
 ## Running from source
 
 Run `./setup_hardlinks` before you load the Chrome or Firefox plugins.  This will connect the generic code in `src/` to the proper locations in the browser-specific subdirectories.  To make changes to injected code, you only need to edit in `src/` directly.
+
+## Contributing
+
+I value contributions.  Looking for an easy way to get involved?  Add a [rule](https://github.com/typpo/ad-detector/blob/master/src/rules.js) for a site currently not covered by AdDetector.  Please open pull requests on this Github repository.
 
 ## License (MIT)
 
