@@ -1,10 +1,13 @@
 'use strict';
 
 /*
- * Entry point.
+ * Entry point for the extension.
  */
 
 function injectScript(file, node) {
+  // Inject the script manually because Chrome sandboxes 'window' for content
+  // scripts, and sometimes we need to check window state to detect
+  // advertisements.
   var th = document.getElementsByTagName(node)[0];
   var s = document.createElement('script');
   s.setAttribute('type', 'text/javascript');

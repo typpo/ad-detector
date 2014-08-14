@@ -38,7 +38,6 @@ function addWarningBanner(sponsorName) {
 
 
 (function run() {
-  // So rules can check 3rd-party window variables.
   var scanners = getRuleForPage();
   if (!scanners) {
     return;
