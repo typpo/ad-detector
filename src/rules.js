@@ -203,4 +203,21 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'washingtonpost.com': [
+    {
+      example: 'http://www.washingtonpost.com/sf/brand-connect/wp/enterprise/one-year-later-a-commitment-renewed/',
+      match: function() {
+        // TODO Can also check for WP Brand Connect in URL, "left title-bar", or in title
+        var elts = document.querySelectorAll('.bylines .byline .byline-title');
+        if (elts.length < 1) {
+          return false;
+        }
+        return elts[0].innerHTML.indexOf('Sponsor Generated Content') > -1;
+      },
+      getSponsor: function() {
+        // Uses images of sponsors' logos
+        return null;
+      }
+    }
+  ]
 };
