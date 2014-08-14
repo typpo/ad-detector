@@ -33,9 +33,9 @@ window.AD_DETECTOR_RULES = {
         return false;
       },
       getSponsor: function() {
-        var elts = document.querySelectorAll('[rel="author"]')
+        var elts = document.querySelectorAll('[rel="author"]');
         if (elts.length > 0) {
-          return elts[0].innerHTML.trim()
+          return elts[0].innerHTML.trim();
         }
         return null;
       },
