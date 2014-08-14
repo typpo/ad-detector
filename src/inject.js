@@ -8,10 +8,14 @@
  */
 
 
+// Firefox and Chrome differ from how to get the correct window variable.
+var _window = typeof unsafeWindow === 'undefined' ? window : unsafeWindow;
+
+
 function getRuleForPage() {
-  var domain = window.location.host;
+  var domain = _window.location.host;
   domain = domain.replace('www.', '');
-  return window.AD_DETECTOR_RULES[domain];
+  return _window.AD_DETECTOR_RULES[domain];
 }
 
 

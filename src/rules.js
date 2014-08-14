@@ -1,5 +1,7 @@
 'use strict';
 
+var _window = typeof unsafeWindow === 'undefined' ? window : unsafeWindow;
+
 /*
  * Rules for identifying ads on individual domains.
  *
@@ -7,7 +9,7 @@
  * match: Returns true if the current article is sponsored.
  * getSponsor: Returns the name of the sponsor. Null if unknown.
  */
-window.AD_DETECTOR_RULES = {
+_window.AD_DETECTOR_RULES = {
   'ad-assets.nytimes.com': [
     {
       example: 'http://ad-assets.nytimes.com/paidpost/dell/will-millennials-ever-completely-shun-the-office.html',
@@ -57,7 +59,7 @@ window.AD_DETECTOR_RULES = {
     {
       example: 'http://www.fastcompany.com/3002725/infographic-upss-2012-change-supply-chain-survey',
       match: function() {
-        return window.bootstrap_obj ? window.bootstrap_obj.sponsored : false;
+        return _window.bootstrap_obj ? _window.bootstrap_obj.sponsored : false;
       },
       getSponsor: function() {
         return null;
@@ -105,12 +107,12 @@ window.AD_DETECTOR_RULES = {
     {
       example: 'http://mashable.com/2013/03/12/dog-mans-best-friend/',
       match: function() {
-        return window.__o.content_source_type === 'Supported' ||
-            window.__o.content_source_type === 'Sponsored' ||
-            window.__o.topics.toLowerCase().indexOf('sponsored') > -1;
+        return _window.__o.content_source_type === 'Supported' ||
+            _window.__o.content_source_type === 'Sponsored' ||
+            _window.__o.topics.toLowerCase().indexOf('sponsored') > -1;
       },
       getSponsor: function() {
-        var source = window.__o.content_source_name;
+        var source = _window.__o.content_source_name;
         if (!source || source === 'Internal') {
           // Discard false positives.
           return null;
@@ -169,6 +171,20 @@ window.AD_DETECTOR_RULES = {
       },
       getSponsor: function() {
         return null;
+      },
+    },
+  ],
+  // For testing:
+  'ianww.com': [
+    {
+      example: '',
+      match: function() {
+        return _window.location.href.indexOf('ad-test') > -1;
+      },
+      getSponsor: function() {
+        // Displayed sponsor should always be 'windowVar' to verify that we are
+        // not in a sandboxed window.
+        return _window.foo;
       },
     },
   ],
