@@ -85,6 +85,21 @@ window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'huffingtonpost.com': [
+    {
+      example: 'http://www.huffingtonpost.com/2014/07/24/things-you-never-knew-about-tequila_n_5589092.html',
+      match: function() {
+        return document.getElementsByClassName('sponsor_wrapper').length > 0;
+      },
+      getSponsor: function() {
+        var paidElts = document.querySelectorAll('.sponsor_wrapper .sponsor_title_wrapper span');
+        if (paidElts.length < 1) {
+          return null;
+        }
+        return paidElts[0].innerHTML.replace('Presented by ', '');
+      }
+    }
+  ],
   'paidpost.nytimes.com': [
     {
       example: 'http://paidpost.nytimes.com/vacheron-constantin/transmitting-craftsmanship.html',
