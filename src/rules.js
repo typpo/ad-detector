@@ -36,9 +36,9 @@ _window.AD_DETECTOR_RULES = {
         return false;
       },
       getSponsor: function() {
-        var elts = document.querySelectorAll('[rel="author"]')
+        var elts = document.querySelectorAll('[rel="author"]');
         if (elts.length > 0) {
-          return elts[0].innerHTML.trim()
+          return elts[0].innerHTML.trim();
         }
         return null;
       },
@@ -87,6 +87,21 @@ _window.AD_DETECTOR_RULES = {
         return null;
       },
     },
+  ],
+  'huffingtonpost.com': [
+    {
+      example: 'http://www.huffingtonpost.com/2014/07/24/things-you-never-knew-about-tequila_n_5589092.html',
+      match: function() {
+        return document.getElementsByClassName('sponsor_wrapper').length > 0;
+      },
+      getSponsor: function() {
+        var paidElts = document.querySelectorAll('.sponsor_wrapper .sponsor_title_wrapper span');
+        if (paidElts.length < 1) {
+          return null;
+        }
+        return paidElts[0].innerHTML.replace('Presented by ', '');
+      }
+    }
   ],
   'paidpost.nytimes.com': [
     {
@@ -173,6 +188,23 @@ _window.AD_DETECTOR_RULES = {
         return null;
       },
     },
+  ],
+  'washingtonpost.com': [
+    {
+      example: 'http://www.washingtonpost.com/sf/brand-connect/wp/enterprise/one-year-later-a-commitment-renewed/',
+      match: function() {
+        // Can also check for WP Brand Connect in URL, "left title-bar", or in title.
+        var elts = document.querySelectorAll('.bylines .byline .byline-title');
+        if (elts.length < 1) {
+          return false;
+        }
+        return elts[0].innerHTML.indexOf('Sponsor Generated Content') > -1;
+      },
+      getSponsor: function() {
+        // Uses images of sponsors' logos
+        return null;
+      }
+    }
   ],
   // For testing:
   'ianww.com': [
