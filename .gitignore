@@ -1,4 +1,6 @@
-chrome/src/*
+chrome/src/inject.js
+chrome/src/rules.js
+chrome/src/inject.css
 firefox/data/*
 *.xpi
 *.zip
