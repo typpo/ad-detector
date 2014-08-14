@@ -104,10 +104,14 @@ window.AD_DETECTOR_RULES = {
     {
       example: 'http://mashable.com/2013/03/12/dog-mans-best-friend/',
       match: function() {
-        return window.__o.content_source_type === 'Supported';
+        return window.__o.content_source_type === 'Supported' ||
+            window.__o.content_source_type === 'Sponsored';
       },
       getSponsor: function() {
         var source = window.__o.content_source_name;
+        if (!source) {
+          return null;
+        }
         return source[0].toUpperCase() + source.slice(1);
       },
     },
