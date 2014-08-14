@@ -3,6 +3,7 @@
 /*
  * Rules for identifying ads on individual domains.
  *
+ * example: Example URL that should trigger, used for testing.
  * match: Returns true if the current article is sponsored.
  * getSponsor: Returns the name of the sponsor. Null if unknown.
  */
