@@ -6,7 +6,7 @@ pushd `dirname $0`
 
 pushd firefox
 cfx xpi
-mv codenav.xpi ..
+mv ad-detector.xpi ../
 popd
 
 popd
