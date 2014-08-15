@@ -1,6 +1,6 @@
 # AdDetector
 
-AdDetector is a Chrome and Firefox addon that detects articles that paid for by sponsors.
+AdDetector is a Chrome and Firefox addon that detects articles paid for by sponsors.
 
 This method of advertising presents ads as journalism or unbiased articles.  It's called "[native advertising](https://en.wikipedia.org/wiki/Native_advertising)" and is becoming more popular.
 
