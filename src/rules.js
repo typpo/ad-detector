@@ -25,6 +25,17 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'blogs.vancouversun.com': [
+    {
+      example: 'http://blogs.vancouversun.com/2014/03/12/cyberwarfare-expert-cancels-vancouver-talk-over-fear-of-revealing-critical-infrastructure-risks/',
+      match: function() {
+        return document.getElementsByClassName('tag-sponsored').length > 0;
+      },
+      getSponsor: function() {
+        return null;
+      }
+    }
+  ],
   'buzzfeed.com': [
     {
       example: 'http://www.buzzfeed.com/bravo/ways-to-up-your-online-dating-game',
@@ -212,16 +223,16 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
-  'blogs.vancouversun.com': [
+  'usatoday.com': [
     {
-      example: 'http://blogs.vancouversun.com/2014/03/12/cyberwarfare-expert-cancels-vancouver-talk-over-fear-of-revealing-critical-infrastructure-risks/',
+      example: 'http://www.usatoday.com/story/sponsor-story/dell/2014/05/13/dell-tablets-and-culture/9002541/',
       match: function() {
-        return document.getElementsByClassName('tag-sponsored').length > 0;
+        return _window.location.href.indexOf('/sponsor-story/') > -1;
       },
       getSponsor: function() {
         return null;
-      }
-    }
+      },
+    },
   ],
   'vanityfair.com': [
     {
