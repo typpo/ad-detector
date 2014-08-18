@@ -103,6 +103,17 @@ _window.AD_DETECTOR_RULES = {
       }
     }
   ],
+  'lifehacker.com': [
+    {
+      example: 'http://lifehacker.com/5751962/gawker-artists-open-call-for-artists-and-exhibitors',
+      match: function() {
+        return document.getElementsByClassName('sponsored-label').length > 0;
+      },
+      getSponsor: function() {
+        return null;
+      },
+    },
+  ],
   'paidpost.nytimes.com': [
     {
       example: 'http://paidpost.nytimes.com/vacheron-constantin/transmitting-craftsmanship.html',
