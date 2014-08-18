@@ -159,6 +159,21 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'online.wsj.com': [
+    {
+      example: 'http://online.wsj.com/ad/article/narratives_brocade_67186.html?prx_t=cpIBAiqcBAu2QFA',
+      match: function() {
+        return _window.location.href.indexOf('/ad/') > -1;
+      },
+      getSponsor: function() {
+        var elts = document.querySelectorAll('.author a');
+        if (elts.length < 1) {
+          return null;
+        }
+        return elts[0].innerHTML;
+      },
+    },
+  ],
   'slate.com': [
     {
       example: 'http://www.slate.com/articles/news_and_politics/uc/2014/06/living_forever_the_right_way.html',
