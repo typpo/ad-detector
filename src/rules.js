@@ -223,6 +223,18 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'suntimes.com': [
+    {
+      example: 'http://www.suntimes.com/sponsored/28700806-816/live-music-for-every-palate-playing-all-summer-long.html',
+      match: function() {
+        return _window.location.href.indexOf('/sponsored/') > -1 ||
+            document.getElementsByClassName('sponsored-heading').length > 0;
+      },
+      getSponsor: function() {
+        return null;
+      },
+    },
+  ],
   'theatlantic.com': [
     {
       example: 'http://www.theatlantic.com/sponsored/ibm-big-data/big-data-grows-new-role-emerges-chief-data-officer/102/',
