@@ -1,10 +1,12 @@
 # AdDetector
 
-AdDetector is a Chrome and Firefox addon that detects articles paid for by sponsors.
+AdDetector is a Chrome and Firefox addon that detects articles with corporate sponsors and puts a red banner above articles that may mislead the reader.
 
-This method of advertising presents ads as journalism or unbiased articles.  It's called "[native advertising](https://en.wikipedia.org/wiki/Native_advertising)" and is becoming more popular.
+"[Native advertising](https://en.wikipedia.org/wiki/Native_advertising)" is a type of advertising that presents ads as journalism or unbiased articles.
 
-Stories may be marked as sponsored, but sometimes it's very subtle because the whole point is that users don't know it's an ad.  Well-known publications like NYT, The Atlantic, Gawker, and so on are doing this.
+This technique is used by publications like the New York Times, Newsweek, The Atlantic, Buzzfeed, and others. Stories are sometimes marked as sponsored, but these indicators are typically very subtle, leaving many users unaware that the article is sponsored.
+
+AdDetector contains rules to identify small "sponsored" markings. In some cases, these indicators are not even visible normally and instead are hidden in the source code of the webpage.
 
 ## Install for Chrome or Firefox
 
@@ -12,7 +14,7 @@ Get the latest download links on the [AdDetector site](http://ianww.com/ad-detec
 
 ## Running from source
 
-Run `./setup_hardlinks` before you load the Chrome or Firefox plugins.  This will connect the generic code in `src/` to the proper locations in the browser-specific subdirectories.  To make changes to injected code, you only need to edit in `src/` directly.
+Run `./setup_hardlinks` before you load the Chrome or Firefox plugins.  This will connect the generic code in `src/` to the proper locations in the browser-specific subdirectories.  To make changes to injected code, you only need to edit in `src/` directly.  They have to be hardlinks because browsers won't follow symlinks.
 
 ## Contributing
 
