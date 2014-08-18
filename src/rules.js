@@ -197,6 +197,17 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'blogs.vancouversun.com': [
+    {
+      example: 'http://blogs.vancouversun.com/2014/03/12/cyberwarfare-expert-cancels-vancouver-talk-over-fear-of-revealing-critical-infrastructure-risks/',
+      match: function() {
+        return document.getElementsByClassName('tag-sponsored').length > 0;
+      },
+      getSponsor: function() {
+        return null;
+      }
+    }
+  ],
   'vanityfair.com': [
     {
       example: 'http://www.vanityfair.com/online/oscars/2013/12/hennessy-sir-malcolm-campbell-speed-racer',
