@@ -136,6 +136,18 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'newsweek.com': [
+    {
+      example: 'http://www.newsweek.com/10-best-personal-injury-attorneys',
+      match: function() {
+        return document.getElementsByClassName('sponsored-insight').length > 0;
+      },
+      getSponsor: function() {
+        // Newsweek doesn't say; sometimes there are many sponsors for a single list.
+        return null;
+      },
+    },
+  ],
   'slate.com': [
     {
       example: 'http://www.slate.com/articles/news_and_politics/uc/2014/06/living_forever_the_right_way.html',
@@ -192,7 +204,7 @@ _window.AD_DETECTOR_RULES = {
   // For testing:
   'ianww.com': [
     {
-      example: '',
+      example: 'http://ianww.com/ad-detector/ad-test.html',
       match: function() {
         return _window.location.href.indexOf('ad-test') > -1;
       },
