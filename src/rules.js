@@ -166,6 +166,22 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'nydailynews.com': [
+    {
+      example: 'http://www.nydailynews.com/services/cuny-citizenship-immigration-centers-announce-expanded-summer-hours-article-1.1860540',
+      match: function() {
+        var elt = document.getElementById('a-credits');
+        if (!elt) {
+          return false;
+        }
+        return elt.innerHTML.indexOf('CONTENT SPONSORED') > -1;
+      },
+      getSponsor: function() {
+        var elt = document.getElementById('a-credits');
+        return elt ? elt.innerHTML.replace('CONTENT SPONSORED BY ', '') : null;
+      },
+    },
+  ],
   'online.wsj.com': [
     {
       example: 'http://online.wsj.com/ad/article/narratives_brocade_67186.html?prx_t=cpIBAiqcBAu2QFA',
