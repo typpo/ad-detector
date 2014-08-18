@@ -114,6 +114,17 @@ _window.AD_DETECTOR_RULES = {
       }
     }
   ],
+  'latimes.com': [
+    {
+      example: 'http://www.latimes.com/brandpublishing/localplus/ucsandiego/la-ss-ucsd-playhouse-dto-story.html',
+      match: function() {
+        return _window.location.href.indexOf('/brandpublishing') > -1;
+      },
+      getSponsor: function() {
+        return null;
+      },
+    },
+  ],
   'lifehacker.com': [
     {
       example: 'http://lifehacker.com/5751962/gawker-artists-open-call-for-artists-and-exhibitors',
@@ -122,21 +133,6 @@ _window.AD_DETECTOR_RULES = {
       },
       getSponsor: function() {
         return null;
-      },
-    },
-  ],
-  'paidpost.nytimes.com': [
-    {
-      example: 'http://paidpost.nytimes.com/vacheron-constantin/transmitting-craftsmanship.html',
-      match: function() {
-        return true;
-      },
-      getSponsor: function() {
-        var paidElts = document.getElementsByClassName('paid-top-border-txt');
-        if (paidElts.length < 1) {
-          return null;
-        }
-        return paidElts[0].innerHTML.replace('PAID FOR AND POSTED BY ', '');
       },
     },
   ],
@@ -182,6 +178,21 @@ _window.AD_DETECTOR_RULES = {
           return null;
         }
         return elts[0].innerHTML;
+      },
+    },
+  ],
+  'paidpost.nytimes.com': [
+    {
+      example: 'http://paidpost.nytimes.com/vacheron-constantin/transmitting-craftsmanship.html',
+      match: function() {
+        return true;
+      },
+      getSponsor: function() {
+        var paidElts = document.getElementsByClassName('paid-top-border-txt');
+        if (paidElts.length < 1) {
+          return null;
+        }
+        return paidElts[0].innerHTML.replace('PAID FOR AND POSTED BY ', '');
       },
     },
   ],
