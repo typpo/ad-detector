@@ -351,6 +351,17 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'theawl.com': [
+    {
+      example: 'http://www.theawl.com/2012/06/bbcacopper',
+      match: function() {
+        return document.getElementsByClassName('tag-sponsored-content').length > 0;
+      },
+      getSponsor: function() {
+        return null;
+      }
+    }
+  ],
   'theonion.com': [
     {
       example: 'http://www.theonion.com/sponsored/woman-going-to-take-quick-break-after-filling-out,85/',
