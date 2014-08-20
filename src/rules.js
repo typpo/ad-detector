@@ -25,6 +25,22 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'betabeat.com': [
+    {
+      example: 'http://betabeat.com/2013/03/vote-for-your-favorite-startups-the-pitch-lerer-ventures-softbank-capital/',
+      match: function() {
+        var elts = document.getElementsByClassName('rubric-block');
+        if (elts.length > 0) {
+          return elts[0].innerHTML.indexOf('Sponsored by') > -1;
+        }
+        return false;
+      },
+      getSponsor: function() {
+        var elt = document.querySelector('.rubric-block a');
+        return elt ? elt.innerHTML.replace('Sponsored by ', '') : null;
+      }
+    }
+  ],
   'blogs.vancouversun.com': [
     {
       example: 'http://blogs.vancouversun.com/2014/03/12/cyberwarfare-expert-cancels-vancouver-talk-over-fear-of-revealing-critical-infrastructure-risks/',
@@ -439,6 +455,21 @@ _window.AD_DETECTOR_RULES = {
         return _window.foo;
       },
     },
+  ],
+  'venturebeat.com': [
+    {
+      example: 'http://venturebeat.com/2013/01/31/create-and-design-websites-on-your-pc-with-coffeecup-vb-store/',
+      match: function() {
+        return document.getElementsByClassName('partnered-post').length > 0;
+      },
+      getSponsor: function() {
+        var elts = document.getElementsByClassName('the-author');
+        if (elts.length < 1) {
+          return null;
+        }
+        return elts[0].innerHTML;
+      }
+    }
   ],
   'washingtonpost.com': [
     {
