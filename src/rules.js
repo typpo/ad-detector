@@ -275,6 +275,17 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'money.msn.com': [
+    {
+      example: 'http://money.msn.com/small-business-smarts/transit-connect.aspx',
+      match: function() {
+        return document.title.indexOf('Sponsored by') > -1;
+      },
+      getSponsor: function() {
+        return document.title.slice(document.title.indexOf('Sponsored by') + 13);
+      },
+    },
+  ],
   'newsweek.com': [
     {
       example: 'http://www.newsweek.com/10-best-personal-injury-attorneys',
