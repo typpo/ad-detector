@@ -104,7 +104,8 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://digiday.com/sponsored/pulsepointbcs-84397/',
       match: function() {
-        return _window.location.href.indexOf('/sponsored/') > -1;
+        return _window.location.href.indexOf('/sponsored/') > -1 ||
+            document.getElementsByClassName('sponsored-flag').length > 0;
       },
       getSponsor: function() {
         var elt = document.querySelector('[rel="author"]');
