@@ -66,6 +66,28 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'denverpost.com': [
+    {
+      example: 'http://www.denverpost.com/energy-and-environment/sponsored?ccc=2106',
+      match: function() {
+        return _window.location.href.indexOf('/sponsored') > -1;
+      },
+      getSponsor: function() {
+        return null;
+      },
+    },
+  ],
+  'ew.com': [
+    {
+      example: 'http://www.ew.com/ew/gallery/0,,20308916_20447484_20885831,00.html',
+      match: function() {
+        return document.getElementsByClassName('sponsoredBy').length > 0;
+      },
+      getSponsor: function() {
+        return null;
+      },
+    },
+  ],
   'fastcompany.com': [
     {
       example: 'http://www.fastcompany.com/3002725/infographic-upss-2012-change-supply-chain-survey',
