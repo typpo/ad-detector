@@ -54,6 +54,18 @@ _window.AD_DETECTOR_RULES = {
       }
     }
   ],
+  'business.time.com': [
+    {
+      example: 'http://business.time.com/2013/07/12/a-game-plan-for-the-future/',
+      match: function() {
+        return !!document.getElementById('sponsor-banner');
+      },
+      getSponsor: function() {
+        var elt = document.getElementById('sponsored-ad');
+        return elt ? elt.innerHTML.replace('Sponsored by ', '') : null;
+      },
+    },
+  ],
   'buzzfeed.com': [
     {
       example: 'http://www.buzzfeed.com/bravo/ways-to-up-your-online-dating-game',
