@@ -1,5 +1,7 @@
 'use strict';
 
+// TODO thenextweb, time.com, pandodaily
+
 var _window = typeof unsafeWindow === 'undefined' ? window : unsafeWindow;
 
 /*
@@ -363,6 +365,17 @@ _window.AD_DETECTOR_RULES = {
       match: function() {
         // Haven't figured out how to match their sponsored articles...
         return false;
+      },
+      getSponsor: function() {
+        return null;
+      },
+    },
+  ],
+  'screen.yahoo.com': [
+    {
+      example: 'https://screen.yahoo.com/callaway-talks-phil-mickelson-u-140000616.html',
+      match: function() {
+        return document.title.indexOf('Sponsored Content') > -1;
       },
       getSponsor: function() {
         return null;
