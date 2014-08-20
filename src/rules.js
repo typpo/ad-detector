@@ -88,6 +88,19 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'fortune.com': [
+    {
+      example: 'http://fortune.com/contentfrom/2014/07/01/Content-Marketing-A-Winner-on-Mobile/?ntv_a=0pABAL54BAfxgFA',
+      match: function() {
+        return _window.location.href.indexOf('/contentfrom/') > -1 ||
+            document.getElementsByClassName('sponsor-name').length > 0;
+      },
+      getSponsor: function() {
+        var elt = document.querySelector('.sponsor-name span');
+        return elt ? elt.innerHTML : null;
+      }
+    }
+  ],
   'gawker.com': [
     {
       example: 'http://gawker.com/5974129/how-to-transform-into-a-total-nerd-babe/',
@@ -209,6 +222,18 @@ _window.AD_DETECTOR_RULES = {
           return null;
         }
         return paidElts[0].innerHTML.replace('PAID FOR AND POSTED BY ', '');
+      },
+    },
+  ],
+  'pando.com': [
+    {
+      example: 'http://pando.com/2013/03/01/you-shouldnt-be-bored-at-a-board-meeting-pt-2-structure-for-success/',
+      match: function() {
+        // Haven't figured out how to match their sponsored articles...
+        return false;
+      },
+      getSponsor: function() {
+        return null;
       },
     },
   ],
