@@ -55,6 +55,18 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'businessinsider.com': [
+    {
+      example: 'http://www.businessinsider.com/sc/music-city-pizza-owner-keith-hayman-interview-2014-7',
+      match: function() {
+        return _window.location.href.indexOf('/sc/') > -1 ||
+            document.getElementsByClassName('tooltip-sponsor').length > 0;
+      },
+      getSponsor: function() {
+        return null;
+      },
+    },
+  ],
   'chicagotribune.com': [
     {
       example: 'http://www.chicagotribune.com/brandpublishing/seniorhousingguide/',
@@ -341,6 +353,17 @@ _window.AD_DETECTOR_RULES = {
         return text.slice(3, text.lastIndexOf('·') - 1);
       },
     },
+  ],
+  'theverge.com': [
+    {
+      example: 'http://www.theverge.com/sponsored/intel-future-is-now',
+      match: function() {
+        return _window.location.href.indexOf('/sponsored/') > -1;
+      },
+      getSponsor: function() {
+        return null;
+      }
+    }
   ],
   'usatoday.com': [
     {
