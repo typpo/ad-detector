@@ -96,6 +96,31 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'content.time.com': [
+    {
+      example: 'http://content.time.com/time/sponsoredarchive/landing/0,31909,1947800,00.html',
+      match: function() {
+        return _window.location.href.indexOf('/sponsoredarchive/') > -1;
+      },
+      getSponsor: function() {
+        return null;
+      },
+    },
+  ],
+  'curbed.com': [
+    {
+      example: 'http://curbed.com/archives/2014/04/09/more-nycinspired-apartment-essentials-from-gilt-home.php',
+      match: function() {
+        if (_window.POST_TAGS && _window.POST_TAGS instanceof Array) {
+          return _window.POST_TAGS.indexOf('Sponsored Post') > -1;
+        }
+        return false;
+      },
+      getSponsor: function() {
+        return null;
+      },
+    },
+  ],
   'deadspin.com': [
     {
       example: 'http://deadspin.com/5969545/exclusive-could-this-be-chris-pauls-secret-twin-brother',
@@ -182,6 +207,24 @@ _window.AD_DETECTOR_RULES = {
       example: 'http://gawker.com/5974129/how-to-transform-into-a-total-nerd-babe/',
       match: function() {
         return document.getElementsByClassName('sponsored-label').length > 0;
+      },
+      getSponsor: function() {
+        return null;
+      },
+    },
+  ],
+  'gigaom.com': [
+    {
+      example: 'http://gigaom.com/2014/08/19/are-we-there-yet-it-teams-share-plans-and-concerns-with-saas/',
+      match: function() {
+        var elts = document.querySelectorAll('meta[property="article:tag"]');
+        for (var i=0; i < elts.length; i++) {
+          var elt = elts[i];
+          if (elt.getAttribute('content') === 'Sponsored Content') {
+            return true;
+          }
+        }
+        return false;
       },
       getSponsor: function() {
         return null;
@@ -404,6 +447,24 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'stylemepretty.com': [
+    {
+      example: 'http://www.stylemepretty.com/2014/08/19/alexandra-grecco-a-discount-a-giveaway-2/',
+      match: function() {
+        var elts = document.querySelectorAll('a[rel="tag"]');
+        for (var i=0; i < elts.length; i++) {
+          var elt = elts[i];
+          if (elt.innerHTML === 'Sponsored Posts') {
+            return true;
+          }
+        }
+        return false;
+      },
+      getSponsor: function() {
+        return null;
+      },
+    },
+  ],
   'suntimes.com': [
     {
       example: 'http://www.suntimes.com/sponsored/28700806-816/live-music-for-every-palate-playing-all-summer-long.html',
@@ -432,6 +493,17 @@ _window.AD_DETECTOR_RULES = {
       example: 'http://www.theawl.com/2012/06/bbcacopper',
       match: function() {
         return document.getElementsByClassName('tag-sponsored-content').length > 0;
+      },
+      getSponsor: function() {
+        return null;
+      }
+    }
+  ],
+  'thekitchn.com': [
+    {
+      example: 'http://www.thekitchn.com/recipe-paradise-punch-recipes-from-the-kitchn-205103',
+      match: function() {
+        return document.getElementsByClassName('sponsored-post').length > 0;
       },
       getSponsor: function() {
         return null;
