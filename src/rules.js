@@ -365,6 +365,17 @@ _window.AD_DETECTOR_RULES = {
       }
     }
   ],
+  'thewrap.com': [
+    {
+      example: 'http://www.thewrap.com/mockup-secrets-leveraging-nycs-super-bowl-weekend-nyc-paramount-hotels-plan-sponsored-story/',
+      match: function() {
+        return _window.location.href.indexOf('sponsored-story') > -1;
+      },
+      getSponsor: function() {
+        return null;
+      }
+    }
+  ],
   'usatoday.com': [
     {
       example: 'http://www.usatoday.com/story/sponsor-story/dell/2014/05/13/dell-tablets-and-culture/9002541/',
