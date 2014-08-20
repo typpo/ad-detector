@@ -127,6 +127,17 @@ _window.AD_DETECTOR_RULES = {
       }
     }
   ],
+  'innovationinsights.wired.com': [
+    {
+      example: 'http://innovationinsights.wired.com/insights/2014/03/cloud-finding-way-fog/',
+      match: function() {
+        return true;
+      },
+      getSponsor: function() {
+        return 'IBM';
+      }
+    }
+  ],
   'latimes.com': [
     {
       example: 'http://www.latimes.com/brandpublishing/localplus/ucsandiego/la-ss-ucsd-playhouse-dto-story.html',
@@ -326,6 +337,17 @@ _window.AD_DETECTOR_RULES = {
       },
       getSponsor: function() {
         // Uses images of sponsors' logos
+        return null;
+      }
+    }
+  ],
+  'wired.com': [
+    {
+      example: 'http://www.wired.com/partners/netflix/',
+      match: function() {
+        return _window.location.href.indexOf('/partners/') > -1;
+      },
+      getSponsor: function() {
         return null;
       }
     }
