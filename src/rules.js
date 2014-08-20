@@ -291,6 +291,19 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'nypost.com': [
+    {
+      example: 'http://nypost.com/dispatch/the-clubhouse/',
+      match: function() {
+        var elt = document.getElementById('article-dek');
+        return elt ? elt.innerHTML.indexOf('sponsored by') > -1 : false;
+      },
+      getSponsor: function() {
+        var elt = document.getElementById('article-dek');
+        return elt ? elt.innerHTML.replace('Content sponsored by ', '') : null;
+      },
+    },
+  ],
   'online.wsj.com': [
     {
       example: 'http://online.wsj.com/ad/article/narratives_brocade_67186.html?prx_t=cpIBAiqcBAu2QFA',
