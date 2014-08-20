@@ -149,6 +149,17 @@ _window.AD_DETECTOR_RULES = {
       }
     }
   ],
+  'hollywoodlife.com': [
+    {
+      example: 'http://hollywoodlife.com/pics/britney-spears-femme-fatale-tour-photos/',
+      match: function() {
+        return document.title.toLowerCase().indexOf('sponsored by') > -1;
+      },
+      getSponsor: function() {
+        return null;
+      }
+    }
+  ],
   'innovationinsights.wired.com': [
     {
       example: 'http://innovationinsights.wired.com/insights/2014/03/cloud-finding-way-fog/',
