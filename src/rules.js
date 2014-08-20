@@ -188,6 +188,17 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'homes.yahoo.com': [
+    {
+      example: 'https://homes.yahoo.com/photos/inside-innovation-brass-monkey-reinventing-photo-113000190.html',
+      match: function() {
+        return document.title.indexOf('Sponsored Content') > -1;
+      },
+      getSponsor: function() {
+        return null;
+      },
+    },
+  ],
   'huffingtonpost.com': [
     {
       example: 'http://www.huffingtonpost.com/2014/07/24/things-you-never-knew-about-tequila_n_5589092.html',
