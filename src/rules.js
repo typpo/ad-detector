@@ -100,6 +100,18 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'digiday.com': [
+    {
+      example: 'http://digiday.com/sponsored/pulsepointbcs-84397/',
+      match: function() {
+        return _window.location.href.indexOf('/sponsored/') > -1;
+      },
+      getSponsor: function() {
+        var elt = document.querySelector('[rel="author"]');
+        return elt ? elt.innerHTML : null;
+      }
+    }
+  ],
   'ew.com': [
     {
       example: 'http://www.ew.com/ew/gallery/0,,20308916_20447484_20885831,00.html',
