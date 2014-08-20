@@ -55,6 +55,17 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'chicagotribune.com': [
+    {
+      example: 'http://www.chicagotribune.com/brandpublishing/seniorhousingguide/',
+      match: function() {
+        return _window.location.href.indexOf('/brandpublishing/') > -1;
+      },
+      getSponsor: function() {
+        return null;
+      },
+    },
+  ],
   'deadspin.com': [
     {
       example: 'http://deadspin.com/5969545/exclusive-could-this-be-chris-pauls-secret-twin-brother',
