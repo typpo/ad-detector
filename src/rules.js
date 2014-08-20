@@ -263,6 +263,18 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'mediaite.com': [
+    {
+      example: 'http://www.mediaite.com/tv/nbcs-rock-center-with-brian-williams-something-for-everyone/',
+      match: function() {
+        return _window._sf_async_config.authors === 'SPONSORED CONTENT';
+      },
+      getSponsor: function() {
+        var elt = document.getElementById('article-dek');
+        return elt ? elt.innerHTML.replace('Content sponsored by ', '') : null;
+      },
+    },
+  ],
   'newsweek.com': [
     {
       example: 'http://www.newsweek.com/10-best-personal-injury-attorneys',
