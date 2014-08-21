@@ -406,6 +406,17 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'on.aol.com': [
+    {
+      example: 'http://on.aol.com/video/moviefone---young-adult---cast-interviews---high-school--sponsored-content--517219863',
+      match: function() {
+        return _window.location.href.indexOf('sponsored-content') > -1;
+      },
+      getSponsor: function() {
+        return null;
+      },
+    },
+  ],
   'online.wsj.com': [
     {
       example: 'http://online.wsj.com/ad/article/narratives_brocade_67186.html?prx_t=cpIBAiqcBAu2QFA',
