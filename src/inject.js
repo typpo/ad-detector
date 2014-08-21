@@ -30,7 +30,7 @@ function addWarningBanner(sponsorName) {
   body.style.marginTop = '65px';
 
   var textElt = document.createElement('span');
-  var text = '[AdDetector] This article is an advertisement ' +
+  var text = '[AdDetector] This page is an advertisement ' +
       'paid for by ' + (sponsorName || 'a sponsor') + '&nbsp;&times;';
   textElt.innerHTML = text;
   banner.appendChild(textElt);
