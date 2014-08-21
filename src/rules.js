@@ -203,10 +203,10 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://www.forbes.com/sites/fidelity/2014/04/29/should-you-accept-your-employers-pension-buyout-offer/',
       match: function() {
-        return document.getElementsByClassName('brandvoice').length > 0;
+        return document.querySelector('.article_entity .brandvoice') !== null;
       },
       getSponsor: function() {
-        return document.getElementsByClassName('brandvoice')[0].textContent;
+        return document.querySelector('.article_entity .brandvoice').innerHTML;
       },
     },
   ],
