@@ -133,6 +133,17 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'dailyfinance.com': [
+    {
+      example: 'http://www.dailyfinance.com/2014/01/24/where-do-you-rank-taxpayer/',
+      match: function() {
+        return document.getElementsByClassName('sponsored').length > 0;
+      },
+      getSponsor: function() {
+        return null;
+      },
+    },
+  ],
   'deadspin.com': [
     {
       example: 'http://deadspin.com/5969545/exclusive-could-this-be-chris-pauls-secret-twin-brother',
@@ -253,6 +264,19 @@ _window.AD_DETECTOR_RULES = {
         return null;
       },
     },
+  ],
+  'girlinthelittleredkitchen.com': [
+    {
+      example: 'http://girlinthelittleredkitchen.com/2014/07/avocado-tomato-feta-toast-poached-eggs/',
+      match: function() {
+        // This method of detection could be prone to false positives.
+        var elt = document.querySelector('.post');
+        return elt ? elt.innerHTML.indexOf('sponsored by') > -1 : false;
+      },
+      getSponsor: function() {
+        return null;
+      }
+    }
   ],
   'homes.yahoo.com': [
     {
