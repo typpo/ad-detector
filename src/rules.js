@@ -1,7 +1,5 @@
 'use strict';
 
-// TODO thenextweb, time.com, pandodaily
-
 var _window = typeof unsafeWindow === 'undefined' ? window : unsafeWindow;
 
 /*
