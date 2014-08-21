@@ -463,6 +463,21 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'refinery29.com': [
+    {
+      example: 'http://www.refinery29.com/43774#slide',
+      match: function() {
+        var elts = document.getElementsByClassName('slideshow');
+        if (elts.length < 1) {
+          return null;
+        }
+        return elts[0].innerHTML.indexOf('sponsored by') > -1
+      },
+      getSponsor: function() {
+        return null;
+      },
+    },
+  ],
   'screen.yahoo.com': [
     {
       example: 'https://screen.yahoo.com/callaway-talks-phil-mickelson-u-140000616.html',
