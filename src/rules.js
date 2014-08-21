@@ -519,7 +519,8 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://www.theatlantic.com/sponsored/ibm-big-data/big-data-grows-new-role-emerges-chief-data-officer/102/',
       match: function() {
-        return document.getElementsByClassName('sponsor-warning').length > 0;
+        return _window.location.href.indexOf('/sponsored/') > -1 ||
+          document.getElementsByClassName('sponsor-warning').length > 0;
       },
       getSponsor: function() {
         return null;
