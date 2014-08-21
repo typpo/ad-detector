@@ -133,17 +133,6 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
-  'dailyfinance.com': [
-    {
-      example: 'http://www.dailyfinance.com/2014/01/24/where-do-you-rank-taxpayer/',
-      match: function() {
-        return document.getElementsByClassName('sponsored').length > 0;
-      },
-      getSponsor: function() {
-        return null;
-      },
-    },
-  ],
   'deadspin.com': [
     {
       example: 'http://deadspin.com/5969545/exclusive-could-this-be-chris-pauls-secret-twin-brother',
