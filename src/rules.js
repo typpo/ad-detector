@@ -190,6 +190,17 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'foodandwine.com': [
+    {
+      example: 'http://www.foodandwine.com/articles/lindt-falls-best-wine-pairings', 
+      match: function() {
+        return document.getElementsByClassName('sponsor-info').length > 0;
+      },
+      getSponsor: function() {
+        return null;
+      },
+    },
+  ],
   'forbes.com': [
     {
       example: 'http://www.forbes.com/sites/fidelity/2014/04/29/should-you-accept-your-employers-pension-buyout-offer/',
