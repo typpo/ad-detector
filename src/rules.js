@@ -192,7 +192,7 @@ _window.AD_DETECTOR_RULES = {
   ],
   'foodandwine.com': [
     {
-      example: 'http://www.foodandwine.com/articles/lindt-falls-best-wine-pairings', 
+      example: 'http://www.foodandwine.com/articles/lindt-falls-best-wine-pairings',
       match: function() {
         return document.getElementsByClassName('sponsor-info').length > 0;
       },
@@ -445,6 +445,21 @@ _window.AD_DETECTOR_RULES = {
       },
       getSponsor: function() {
         return null;
+      },
+    },
+  ],
+  'pcworld.com': [
+    {
+      example: 'http://www.pcworld.com/article/2061962/android-keyboard-war-heats-up-as-swiftkey-and-swype-get-big-updates.html',
+      match: function() {
+        return document.getElementsByClassName('sponsored-by').length > 0;
+      },
+      getSponsor: function() {
+        var elts = document.getElementsByClassName('brandpost-blurb');
+        if (elts.length < 1) {
+          return null;
+        }
+        return elts[0].innerHTML;
       },
     },
   ],
