@@ -324,6 +324,7 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  /*
   'lifehacker.com': [
     {
       example: 'http://lifehacker.com/5751962/gawker-artists-open-call-for-artists-and-exhibitors',
@@ -335,6 +336,7 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  */
   'mashable.com': [
     {
       example: 'http://mashable.com/2013/03/12/dog-mans-best-friend/',
