@@ -376,6 +376,17 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'messages.people.com': [
+    {
+      example: 'http://messages.people.com/sponsored-post-jetblue/',
+      match: function() {
+        return true;
+      },
+      getSponsor: function() {
+        return null;
+      },
+    },
+  ],
   'newsweek.com': [
     {
       example: 'http://www.newsweek.com/10-best-personal-injury-attorneys',
