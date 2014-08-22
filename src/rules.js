@@ -650,20 +650,6 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
-  // For testing:
-  'ianww.com': [
-    {
-      example: 'http://ianww.com/ad-detector/ad-test.html',
-      match: function() {
-        return _window.location.href.indexOf('ad-test') > -1;
-      },
-      getSponsor: function() {
-        // Displayed sponsor should always be 'windowVar' to verify that we are
-        // not in a sandboxed window.
-        return _window.foo;
-      },
-    },
-  ],
   'venturebeat.com': [
     {
       example: 'http://venturebeat.com/2013/01/31/create-and-design-websites-on-your-pc-with-coffeecup-vb-store/',
