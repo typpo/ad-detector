@@ -399,6 +399,17 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'nu.nl': [
+    {
+      example: 'http://www.nu.nl/advertorial-elektrisch-rijden/3845090/tankstation-vervangen-thuis-opladen.html',
+      match: function() {
+        return _window.location.href.indexOf('/advertorial-');
+      },
+      getSponsor: function() {
+        return null;
+      },
+    },
+  ],
   'nydailynews.com': [
     {
       example: 'http://www.nydailynews.com/services/cuny-citizenship-immigration-centers-announce-expanded-summer-hours-article-1.1860540',
