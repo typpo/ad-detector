@@ -657,6 +657,17 @@ _window.AD_DETECTOR_RULES = {
       }
     }
   ],
+  'tweakers.net': [
+    {
+      example: 'http://tweakers.net/advertorials/werkenbijns',
+      match: function() {
+        return _window.location.href.indexOf('/advertorials/') > -1;
+      },
+      getSponsor: function() {
+        return null;
+      }
+    }
+  ],
   'usatoday.com': [
     {
       example: 'http://www.usatoday.com/story/sponsor-story/dell/2014/05/13/dell-tablets-and-culture/9002541/',
