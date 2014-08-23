@@ -523,6 +523,15 @@ _window.AD_DETECTOR_RULES = {
         return null;
       },
     },
+    {
+      example: 'http://www.refinery29.com/cartier-sunglasses#slide',
+      match: function() {
+        return document.getElementsByClassName('sponsor-logo-secondary').length > 0;
+      },
+      getSponsor: function() {
+        return null;
+      },
+    },
   ],
   'screen.yahoo.com': [
     {
