@@ -544,6 +544,17 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'seventeen.com': [
+    {
+      example: 'http://www.seventeen.com/fashion/blog/sponsored-get-an-amazing-makeover-at-school',
+      match: function() {
+        return _window.location.href.indexOf('/sponsored-') > -1;
+      },
+      getSponsor: function() {
+        return null;
+      },
+    },
+  ],
   'slate.com': [
     {
       example: 'http://www.slate.com/articles/news_and_politics/uc/2014/06/living_forever_the_right_way.html',
