@@ -405,7 +405,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://www.nu.nl/advertorial-elektrisch-rijden/3845090/tankstation-vervangen-thuis-opladen.html',
       match: function() {
-        return _window.location.href.indexOf('/advertorial-');
+        return _window.location.href.indexOf('/advertorial-') > -1;
       },
       getSponsor: function() {
         return null;
