@@ -29,11 +29,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://betabeat.com/2013/03/vote-for-your-favorite-startups-the-pitch-lerer-ventures-softbank-capital/',
       match: function() {
-        var elts = document.getElementsByClassName('rubric-block');
-        if (elts.length > 0) {
-          return elts[0].innerHTML.indexOf('Sponsored by') > -1;
-        }
-        return false;
+        return util.classContains('rubric-block', 'Sponsored by');
       },
       getSponsor: function() {
         var elt = document.querySelector('.rubric-block a');
@@ -763,3 +759,37 @@ _window.AD_DETECTOR_RULES = {
     },
   ],
 };
+
+/** Common utility functions **/
+var util = {
+  hasInURL: function(s) {
+    return _window.location.href.indexOf(s) > -1;
+  },
+
+  hasInTitle: function(s) {
+    return document.title.indexOf(s) > -1;
+  },
+
+  classAppears: function(className) {
+    return document.getElementsByClassName(className).length > 0;
+  },
+
+  selectorAppears: function(selector) {
+    return document.querySelector(selector) !== null;
+  },
+
+  classContains: function(className, text) {
+    var elts = document.getElementsByClassName(className);
+    return elts.length > 0 ? elts[0].innerHTML.indexOf(text) > -1 : false;
+  },
+
+  selectorContains: function(selector, text) {
+    var elt = document.querySelector(selector);
+    return elt ? elt.innerHTML.indexOf(text) > -1 : false;
+  },
+};
+
+if (typeof exports !== 'undefined' && !window.location) {
+  // This is probably a node test.
+  exports.adDetectorUtil = util;
+}

@@ -1,0 +1,12 @@
+{
+  "name": "ad-detector-test",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app"
+  },
+  "dependencies": {
+    "phantom": "latest",
+    "colors": "latest"
+  }
+}

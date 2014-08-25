@@ -6,6 +6,8 @@ firefox/data/*
 *.zip
 *debuglog.txt
 
+node_modules
+
 ### vim ###
 [._]*.s[a-w][a-z]
 [._]s[a-w][a-z]
