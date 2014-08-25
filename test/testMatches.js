@@ -1,8 +1,8 @@
 /**
  * This script uses phantomjs to verify that every example triggers a match.
  *
- * TODO Rewrite this to use phantom's page.injectJs instead of doing it
- * manually. Can even just inject the entire extension and make it run
+ * TODO Tragically, I couldn't get phantom's page.injectJs to work so I do this
+ * a very ugly way.  Ideally I'd like to inject the extension and run things
  * end-to-end.
  *
  * TODO This script should take an argument to test a single rule.
@@ -18,6 +18,7 @@ var rulesModule = require('../src/rules.js');
 var ph;
 var rulesToCheck = [];
 var ruleUtilBoilerplate = 'var util = {';
+var testPassed = true;
 
 // Build string of helper functions.
 for (var key in rulesModule.adDetectorUtil) {
@@ -43,7 +44,11 @@ phantom.create(function (newPh) {
 
 function testRule(ruleIndex) {
   if (ruleIndex >= rulesToCheck.length) {
-    process.stdout.write('Done.\n'.green.bold);
+    if (testPassed) {
+      process.stdout.write('Done.\n'.green.bold);
+    } else {
+      process.stdout.write('Done, with failures.\n'.red.bold);
+    }
     die();
   }
   var rule = rulesToCheck[ruleIndex];
@@ -52,12 +57,18 @@ function testRule(ruleIndex) {
     process.stdout.write(rule.example.cyan);
     process.stdout.write(' ... ');
 
+    page.set('onAlert', function (msg) {});
+    page.set('onError', function (msg) {});
+    page.set('onConsoleMessage', function (msg) {});
+    page.set('settings.userAgent',
+             'Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36');
+
     page.open(rule.example, function(status) {
       if (status !== 'success') {
         console.error('Loading page failed.'.bold.red);
         console.log('Status:', status);
-        page.close();
-        die();
+        testPassed = false;
+        return testRule(ruleIndex + 1);
       }
 
       // This is an ugly hack. In order to add the helper functions in rules.js,
@@ -72,21 +83,21 @@ function testRule(ruleIndex) {
       jseval = jseval.replace(/(\r\n|\n|\r)/gm, '');
       var functionStr = 'function() {' + 'eval("' + jseval + '");' +
           'var _window = window; return adDetectorMain(); }'
+
       page.evaluate(functionStr, function(result) {
         if (result !== true) {
           process.stdout.write('failed\n'.bold.red);
           console.log('Got', result, 'instead of true using this rule:');
           console.log(rule.match.toString());
-          page.close();
-          die();
+          testPassed = false;
         } else {
           page.close();
           process.stdout.write('passed\n'.green);
-          testRule(ruleIndex + 1);
         }
-      });
+        testRule(ruleIndex + 1);
+      });  // page.evaluate
     });  // page.open
-  });
+  });  // ph.createPage
 }
 
 function die() {
