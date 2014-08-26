@@ -19,7 +19,7 @@ function getRuleForPage() {
 }
 
 
-function addWarningBanner(sponsorName) {
+function addWarningBanner(rule) {
   // Puts a big red banner at the top of the page.
   var body = document.getElementsByTagName('body')[0];
   var banner = document.createElement('div');
@@ -30,8 +30,18 @@ function addWarningBanner(sponsorName) {
   body.style.marginTop = '65px';
 
   var textElt = document.createElement('span');
-  var text = '[AdDetector] This page is an advertisement ' +
-      'paid for by ' + (sponsorName || 'a sponsor') + '&nbsp;&times;';
+  var sponsorName;
+  try {
+    // Because reading sponsor text is sometimes complicated, catch potential
+    // errors caused by site redesign etc.
+    sponsorName = rule.getSponsor ? rule.getSponsor() : null;
+  } catch (err) {}
+
+  var displayMessage = rule.getCustomMessage ? rule.getCustomMessage() :
+      'This page is an advertisement ' + 'paid for by ' +
+          (sponsorName || 'a sponsor') + '&nbsp;&times;'
+
+  var text = '[AdDetector] ' + displayMessage;
   textElt.innerHTML = text;
   banner.appendChild(textElt);
 
@@ -42,15 +52,15 @@ function addWarningBanner(sponsorName) {
 
 
 (function run() {
-  var scanners = getRuleForPage();
-  if (!scanners) {
+  var rules = getRuleForPage();
+  if (!rules) {
     return;
   }
 
-  for (var i=0; i < scanners.length; i++) {
-    var scanner = scanners[i];
-    if (scanner.match()) {
-      addWarningBanner(scanner.getSponsor());
+  for (var i=0; i < rules.length; i++) {
+    var rule = rules[i];
+    if (rule.match()) {
+      addWarningBanner(rule);
       break;
     }
   }

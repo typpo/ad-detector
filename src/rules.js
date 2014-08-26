@@ -10,7 +10,8 @@ var _window = typeof unsafeWindow === 'undefined' ? window : unsafeWindow;
  * getSponsor: Returns the name of the sponsor. Null if unknown.
  *
  * Optional -
- * customMessage: Returns a custom message to show on the warning banner.
+ * getCustomMessage: Returns a custom message to show on the warning banner.
+ *
  */
 _window.AD_DETECTOR_RULES = {
   'ad-assets.nytimes.com': [
@@ -32,7 +33,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://betabeat.com/2013/03/vote-for-your-favorite-startups-the-pitch-lerer-ventures-softbank-capital/',
       match: function() {
-        return util.classContains('rubric-block', 'Sponsored by');
+        return classContains('rubric-block', 'Sponsored by');
       },
       getSponsor: function() {
         var elt = document.querySelector('.rubric-block a');
@@ -44,7 +45,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://blogs.vancouversun.com/2014/03/12/cyberwarfare-expert-cancels-vancouver-talk-over-fear-of-revealing-critical-infrastructure-risks/',
       match: function() {
-        return util.classAppears('tag-sponsored');
+        return classAppears('tag-sponsored');
       },
       getSponsor: function() {
         return null;
@@ -55,7 +56,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://business.time.com/2013/07/12/a-game-plan-for-the-future/',
       match: function() {
-        return util.selectorAppears('#sponsor-banner');
+        return selectorAppears('#sponsor-banner');
       },
       getSponsor: function() {
         var elt = document.getElementById('sponsored-ad');
@@ -86,7 +87,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://www.businessinsider.com/sc/music-city-pizza-owner-keith-hayman-interview-2014-7',
       match: function() {
-        return util.urlContains('/sc/') || util.classAppears('tooltip-sponsor');
+        return urlContains('/sc/') || classAppears('tooltip-sponsor');
       },
       getSponsor: function() {
         return null;
@@ -97,7 +98,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://www.chicagotribune.com/brandpublishing/seniorhousingguide/',
       match: function() {
-        return util.urlContains('/brandpublishing/');
+        return urlContains('/brandpublishing/');
       },
       getSponsor: function() {
         return null;
@@ -108,7 +109,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://content.time.com/time/sponsoredarchive/landing/0,31909,1947800,00.html',
       match: function() {
-        return util.urlContains('/sponsoredarchive/');
+        return urlContains('/sponsoredarchive/');
       },
       getSponsor: function() {
         return null;
@@ -133,7 +134,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://deadspin.com/5969545/exclusive-could-this-be-chris-pauls-secret-twin-brother',
       match: function() {
-        return util.classAppears('sponsored-label');
+        return classAppears('sponsored-label');
       },
       getSponsor: function() {
         return null;
@@ -145,8 +146,8 @@ _window.AD_DETECTOR_RULES = {
       example: 'http://www.denverpost.com/tablehome/ci_14493215?source=rss',
       match: function() {
         var elt = document.getElementById('articleOverline');
-        return util.urlContains('/sponsored') ||
-          util.selectorContains('#articleOverline', 'SPONSORED CONTENT');
+        return urlContains('/sponsored') ||
+          selectorContains('#articleOverline', 'SPONSORED CONTENT');
       },
       getSponsor: function() {
         return null;
@@ -158,7 +159,7 @@ _window.AD_DETECTOR_RULES = {
       example: 'http://digiday.com/sponsored/pulsepointbcs-84397/',
       match: function() {
         // Testing .sponsored-flag results in false positives.
-        return util.urlContains('/sponsored/');
+        return urlContains('/sponsored/');
       },
       getSponsor: function() {
         var elt = document.querySelector('[rel="author"]');
@@ -170,7 +171,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://www.ew.com/ew/gallery/0,,20308916_20447484_20885831,00.html',
       match: function() {
-        return util.classAppears('sponsoredBy');
+        return classAppears('sponsoredBy');
       },
       getSponsor: function() {
         return null;
@@ -188,11 +189,30 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'finance.yahoo.com': [
+    {
+      example: 'https://finance.yahoo.com/news/global-cooling-real-inconvenient-truth-140500879.html',
+      match: function() {
+        return selectorAppears('img[alt="Accesswire"]');
+      },
+      getSponsor: function() {
+        var elt = document.querySelectorAll('#mediacontentstory p');
+        if (!elt) {
+          return null;
+        }
+        return elt[elt.length - 1].children[0].nextSibling.textContent;
+      },
+      getCustomMessage: function() {
+        return 'This page is a press release paid for by ' +
+            this.getSponsor() + '.';
+      },
+    },
+  ],
   'foodandwine.com': [
     {
       example: 'http://www.foodandwine.com/articles/lindt-falls-best-wine-pairings',
       match: function() {
-        return util.classAppears('sponsor-info');
+        return classAppears('sponsor-info');
       },
       getSponsor: function() {
         return null;
@@ -203,7 +223,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://www.forbes.com/sites/fidelity/2014/04/29/should-you-accept-your-employers-pension-buyout-offer/',
       match: function() {
-        return util.selectorAppears('.article_entity .brandvoice');
+        return selectorAppears('.article_entity .brandvoice');
       },
       getSponsor: function() {
         return document.querySelector('.article_entity .brandvoice').innerHTML;
@@ -214,8 +234,8 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://fortune.com/contentfrom/2014/07/01/Content-Marketing-A-Winner-on-Mobile/?ntv_a=0pABAL54BAfxgFA',
       match: function() {
-        return util.urlContains('/contentfrom/') ||
-          util.classAppears('sponsor-name');
+        return urlContains('/contentfrom/') ||
+          classAppears('sponsor-name');
       },
       getSponsor: function() {
         var elt = document.querySelector('.sponsor-name span');
@@ -227,7 +247,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://gawker.com/5974129/how-to-transform-into-a-total-nerd-babe/',
       match: function() {
-        return util.classAppears('sponsored-label');
+        return classAppears('sponsored-label');
       },
       getSponsor: function() {
         return null;
@@ -238,7 +258,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://gigaom.com/2014/08/19/are-we-there-yet-it-teams-share-plans-and-concerns-with-saas/',
       match: function() {
-        if (util.classAppears('sponsor-title')) {
+        if (classAppears('sponsor-title')) {
           return true;
         }
         var elts = document.querySelectorAll('meta[property="article:tag"]');
@@ -260,7 +280,7 @@ _window.AD_DETECTOR_RULES = {
       example: 'http://girlinthelittleredkitchen.com/2014/07/avocado-tomato-feta-toast-poached-eggs/',
       match: function() {
         // This method of detection could be prone to false positives.
-        return util.selectorContains('.post', 'sponsored by');
+        return selectorContains('.post', 'sponsored by');
       },
       getSponsor: function() {
         return null;
@@ -271,7 +291,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'https://homes.yahoo.com/photos/inside-innovation-brass-monkey-reinventing-photo-113000190.html',
       match: function() {
-        return util.titleContains('Sponsored Content');
+        return titleContains('Sponsored Content');
       },
       getSponsor: function() {
         return null;
@@ -282,7 +302,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://www.huffingtonpost.com/2014/07/24/things-you-never-knew-about-tequila_n_5589092.html',
       match: function() {
-        return util.classAppears('sponsor_wrapper');
+        return classAppears('sponsor_wrapper');
       },
       getSponsor: function() {
         var paidElts = document.querySelectorAll('.sponsor_wrapper .sponsor_title_wrapper span');
@@ -319,7 +339,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://www.latimes.com/brandpublishing/localplus/ucsandiego/la-ss-ucsd-playhouse-dto-story.html',
       match: function() {
-        return util.urlContains('/brandpublishing');
+        return urlContains('/brandpublishing');
       },
       getSponsor: function() {
         return null;
@@ -373,7 +393,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://money.msn.com/small-business-smarts/transit-connect.aspx',
       match: function() {
-        return util.titleContains('Sponsored by');
+        return titleContains('Sponsored by');
       },
       getSponsor: function() {
         return document.title.slice(document.title.indexOf('Sponsored by') + 13);
@@ -395,7 +415,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://www.newsweek.com/10-best-personal-injury-attorneys',
       match: function() {
-        return util.classAppears('sponsored-insight');
+        return classAppears('sponsored-insight');
       },
       getSponsor: function() {
         // Newsweek doesn't say; sometimes there are many sponsors for a single list.
@@ -407,7 +427,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://www.nu.nl/advertorial-elektrisch-rijden/3845090/tankstation-vervangen-thuis-opladen.html',
       match: function() {
-        return util.urlContains('/advertorial-');
+        return urlContains('/advertorial-');
       },
       getSponsor: function() {
         return null;
@@ -755,7 +775,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://ianww.com/ad-detector/ad-test.html',
       match: function() {
-        return util.selectorContains('body', 'trigger');
+        return selectorContains('body', 'trigger');
       },
       getSponsor: function() {
         // Displayed sponsor should always be 'windowVar' to verify that we are
@@ -768,36 +788,28 @@ _window.AD_DETECTOR_RULES = {
 
 
 /** Common utility functions **/
-var util = {
-  urlContains: function(s) {
-    return _window.location.href.indexOf(s) > -1;
-  },
+function urlContains(s) {
+  return _window.location.href.indexOf(s) > -1;
+}
 
-  titleContains: function(s) {
-    return document.title.indexOf(s) > -1;
-  },
+function titleContains(s) {
+  return document.title.indexOf(s) > -1;
+}
 
-  classAppears: function(className) {
-    return document.getElementsByClassName(className).length > 0;
-  },
+function classAppears(className) {
+  return document.getElementsByClassName(className).length > 0;
+}
 
-  selectorAppears: function(selector) {
-    return document.querySelector(selector) !== null;
-  },
+function selectorAppears(selector) {
+  return document.querySelector(selector) !== null;
+}
 
-  classContains: function(className, text) {
-    var elts = document.getElementsByClassName(className);
-    return elts.length > 0 ? elts[0].innerHTML.indexOf(text) > -1 : false;
-  },
+function classContains(className, text) {
+  var elts = document.getElementsByClassName(className);
+  return elts.length > 0 ? elts[0].innerHTML.indexOf(text) > -1 : false
+}
 
-  selectorContains: function(selector, text) {
-    var elt = document.querySelector(selector);
-    return elt ? elt.innerHTML.indexOf(text) > -1 : false;
-  },
-};
-
-
-if (typeof exports !== 'undefined' && !window.location) {
-  // This is probably a node test.
-  exports.adDetectorUtil = util;
+function selectorContains(selector, text) {
+  var elt = document.querySelector(selector);
+  return elt ? elt.innerHTML.indexOf(text) > -1 : false
 }

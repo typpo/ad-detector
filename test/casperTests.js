@@ -6,7 +6,7 @@
  * not trigger a banner in most cases.
  */
 
-var TIMEOUT = 10000;  // per site, in ms
+var TIMEOUT = 3 * 60 * 1000;  // per site, in ms
 var fs = require('fs');
 var utils = require('utils');
 var rules = JSON.parse(fs.read('test_url_list'));
