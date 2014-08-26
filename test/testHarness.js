@@ -1,4 +1,8 @@
 #!/usr/bin/env node
+/**
+ * Writes a list of urls to file and runs the casper test.
+ */
+
 'use strict';
 
 var fs = require('fs');

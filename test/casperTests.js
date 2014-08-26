@@ -1,3 +1,11 @@
+/**
+ * This test runs the extension end-to-end for a list of urls in test_url_list,
+ * verifying that all urls trigger the banner.
+ *
+ * TODO Simple checks to avoid false positives - for example, root page should
+ * not trigger a banner in most cases.
+ */
+
 var fs = require('fs');
 var utils = require('utils');
 var rules = JSON.parse(fs.read('test_url_list'));
