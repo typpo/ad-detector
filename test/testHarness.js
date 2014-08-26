@@ -1,17 +1,23 @@
 #!/usr/bin/env node
 'use strict';
 
-var sys = require('sys');
 var exec = require('child_process').exec;
 
 GLOBAL.window = {};
 var rulesModule = require('../src/rules.js');
 
 var rules = [];
-for (var key in window.AD_DETECTOR_RULES) {
-  window.AD_DETECTOR_RULES[key].map(function(rule) {
+if (process.argv.length > 1) {
+  // Grab just the rules for supplied site.
+  window.AD_DETECTOR_RULES[process.argv[1]].map(function(rule) {
     rules.push(rule);
   });
+} else {
+  for (var key in window.AD_DETECTOR_RULES) {
+    window.AD_DETECTOR_RULES[key].map(function(rule) {
+      rules.push(rule);
+    });
+  }
 }
 
 function test(ruleIndex) {
