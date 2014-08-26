@@ -255,7 +255,6 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
-  /*
   'huffingtonpost.com': [
     {
       example: 'http://www.huffingtonpost.com/2014/07/24/things-you-never-knew-about-tequila_n_5589092.html',
@@ -271,7 +270,6 @@ _window.AD_DETECTOR_RULES = {
       }
     }
   ],
- */
   'hollywoodlife.com': [
     {
       example: 'http://hollywoodlife.com/pics/britney-spears-femme-fatale-tour-photos/',
