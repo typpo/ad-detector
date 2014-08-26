@@ -8,6 +8,9 @@ var _window = typeof unsafeWindow === 'undefined' ? window : unsafeWindow;
  * example: Example URL that should trigger, used for testing.
  * match: Returns true if the current article is sponsored.
  * getSponsor: Returns the name of the sponsor. Null if unknown.
+ *
+ * Optional -
+ * customMessage: Returns a custom message to show on the warning banner.
  */
 _window.AD_DETECTOR_RULES = {
   'ad-assets.nytimes.com': [
