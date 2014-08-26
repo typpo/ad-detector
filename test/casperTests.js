@@ -15,8 +15,8 @@ casper.userAgent('Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like 
 casper.options.stepTimeout = TIMEOUT;
 casper.options.onStepTimeout = function() {
   casper.echo('Test timed out');
-  this.test.assert(false);
-  //this.test.fail(this.requestUrl + ' loads in less than ' + TIMEOUT + 'ms.');
+  this.test.fail(this.requestUrl + ' loads in less than ' + TIMEOUT + 'ms.');
+  this.test.done();
   run(this.idx + 1);
 };
 
