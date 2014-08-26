@@ -175,7 +175,7 @@ _window.AD_DETECTOR_RULES = {
         return elt[elt.length - 1].children[0].nextSibling.textContent;
       },
       getCustomMessage: function() {
-        return 'This page is a press release paid for by ' +
+        return 'This article is a press release paid for by ' +
             this.getSponsor() + '.';
       },
     },
