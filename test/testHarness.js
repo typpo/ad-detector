@@ -1,15 +1,16 @@
 #!/usr/bin/env node
 'use strict';
 
-var exec = require('child_process').exec;
+var fs = require('fs');
+var spawn = require('child_process').spawn;
 
 GLOBAL.window = {};
 var rulesModule = require('../src/rules.js');
 
 var rules = [];
-if (process.argv.length > 1) {
+if (process.argv.length > 2) {
   // Grab just the rules for supplied site.
-  window.AD_DETECTOR_RULES[process.argv[1]].map(function(rule) {
+  window.AD_DETECTOR_RULES[process.argv[2]].map(function(rule) {
     rules.push(rule);
   });
 } else {
@@ -20,23 +21,13 @@ if (process.argv.length > 1) {
   }
 }
 
-function test(ruleIndex) {
-  if (ruleIndex > rules.length -1) {
-    console.log('Done.');
-    return;
+fs.writeFile('test_url_list', JSON.stringify(rules, null, 2), function(err) {
+  if (err) {
+    console.error('Could not write local file test_url_list.');
   }
 
-  var rule = rules[ruleIndex];
-  console.log('Testing', rule.example, '...');
-  var execStr = 'casperjs test casperTests.js --url="' + rule.example + '"';
-  exec(execStr, function(err, stdout, stderr) {
-    console.log(stdout);
-    if (err) {
-      console.error('Error:', err);
-      console.error(stderr);
-    }
-    test(ruleIndex + 1);
-  });
-}
-
-test(0);
+  var casperTests =  spawn('casperjs', ['test', 'casperTests.js']);
+  var log = function(data) { console.log(data + ''); };
+  casperTests.stdout.on('data', log);
+  casperTests.stderr.on('data', log);
+});

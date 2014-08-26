@@ -752,7 +752,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://ianww.com/ad-detector/ad-test.html',
       match: function() {
-        return _window.location.href.indexOf('ad-test') > -1;
+        return util.selectorContains('body', 'trigger');
       },
       getSponsor: function() {
         // Displayed sponsor should always be 'windowVar' to verify that we are
