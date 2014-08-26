@@ -472,6 +472,14 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'rtlnieuws.nl': [
+    {
+      example: 'http://www.rtlnieuws.nl/economie/indexbeleggen/beleggen-aandelen-zo-kan-het-ook-advertorial',
+      match: function() {
+        return urlContains('-advertorial') || urlContains('/sponsored-special/');
+      },
+    },
+  ],
   'screen.yahoo.com': [
     {
       example: 'https://screen.yahoo.com/callaway-talks-phil-mickelson-u-140000616.html',
