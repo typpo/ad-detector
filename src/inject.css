@@ -157,7 +157,8 @@
   width: 100%;
   height: 50px;
 
-  background-color: red;
+  background-color: #800000;
+  border-bottom: 2px solid #411010;
   color: white;
 
   font-size: 25px;

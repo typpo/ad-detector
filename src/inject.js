@@ -39,9 +39,9 @@ function addWarningBanner(rule) {
 
   var displayMessage = rule.getCustomMessage ? rule.getCustomMessage() :
       'This page is an advertisement ' + 'paid for by ' +
-          (sponsorName || 'a sponsor') + '&nbsp;&times;'
+          (sponsorName || 'a sponsor');
 
-  var text = '[AdDetector] ' + displayMessage;
+  var text = '[AdDetector] ' + displayMessage + '&nbsp;&times;';
   textElt.innerHTML = text;
   banner.appendChild(textElt);
 
