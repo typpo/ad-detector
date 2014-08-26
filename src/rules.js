@@ -458,6 +458,20 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'prnewswire.com': [
+    {
+      example: 'http://www.prnewswire.com/news-releases/urban-tours-offer-fun-for-foodies-272620221.html',
+      match: function() {
+        return urlContains('/news-releases/');
+      },
+      getSponsor: function() {
+        return document.querySelector('meta[name="author"]').getAttribute('content');
+      },
+      getCustomMessage: function() {
+        return 'This article is a press release paid for by ' + this.getSponsor();
+      },
+    },
+  ],
   'refinery29.com': [
     {
       example: 'http://www.refinery29.com/43774#slide',
