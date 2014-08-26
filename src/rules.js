@@ -347,6 +347,15 @@ _window.AD_DETECTOR_RULES = {
         return document.title.slice(document.title.indexOf('Sponsored by') + 13);
       },
     },
+    {
+      example: 'http://money.msn.com/business-news/article.aspx?feed=PR&date=20140825&id=17882267',
+      match: function() {
+        return urlContains('feed=PR&');
+      },
+      getCustomMessage: function() {
+        return 'This article is a press release paid for by a corporation.';
+      },
+    },
   ],
   'messages.people.com': [
     {
@@ -416,6 +425,15 @@ _window.AD_DETECTOR_RULES = {
           return null;
         }
         return elts[0].innerHTML;
+      },
+    },
+    {
+      example: 'http://online.wsj.com/article/PR-CO-20140825-913551.html',
+      match: function() {
+        return classContains('articleSection', 'PRESS RELEASE');
+      },
+      getCustomMessage: function() {
+        return 'This article is a press release paid for by a corporation.';
       },
     },
   ],
