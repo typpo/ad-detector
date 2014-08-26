@@ -14,12 +14,16 @@ var rules = JSON.parse(fs.read('test_url_list'));
 casper.userAgent('Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36');
 casper.options.stepTimeout = TIMEOUT;
 casper.options.onStepTimeout = function() {
-  this.test.fail(this.requestUrl + ' loads in less than ' + TIMEOUT + 'ms.');
+  casper.echo('Test timed out');
+  this.test.assert(false);
+  //this.test.fail(this.requestUrl + ' loads in less than ' + TIMEOUT + 'ms.');
+  run(this.idx + 1);
 };
 
 // For loop won't work here for some reason.
 function run(idx) {
   if (idx >= rules.length) return;
+  this.idx = idx;
   var rule = rules[idx];
   casper.test.begin('Banner appears on ' + rule.example,
                     1, function(test) {
@@ -34,7 +38,6 @@ function run(idx) {
 
     casper.run(function() {
       test.done();
-
       run(idx + 1);
     });
   });

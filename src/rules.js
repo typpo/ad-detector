@@ -11,7 +11,6 @@ var _window = typeof unsafeWindow === 'undefined' ? window : unsafeWindow;
  * Optional -
  * getSponsor: Returns the name of the sponsor. Null if unknown.
  * getCustomMessage: Returns a custom message to show on the warning banner.
- *
  */
 _window.AD_DETECTOR_RULES = {
   'ad-assets.nytimes.com': [
@@ -256,6 +255,7 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  /*
   'huffingtonpost.com': [
     {
       example: 'http://www.huffingtonpost.com/2014/07/24/things-you-never-knew-about-tequila_n_5589092.html',
@@ -271,6 +271,7 @@ _window.AD_DETECTOR_RULES = {
       }
     }
   ],
+ */
   'hollywoodlife.com': [
     {
       example: 'http://hollywoodlife.com/pics/britney-spears-femme-fatale-tour-photos/',
@@ -377,11 +378,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://www.nydailynews.com/services/cuny-citizenship-immigration-centers-announce-expanded-summer-hours-article-1.1860540',
       match: function() {
-        var elt = document.getElementById('a-credits');
-        if (!elt) {
-          return false;
-        }
-        return elt.innerHTML.indexOf('CONTENT SPONSORED') > -1;
+        return selectorContains('#a-credits', 'CONTENT SPONSORED');
       },
       getSponsor: function() {
         var elt = document.getElementById('a-credits');
@@ -393,8 +390,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://nypost.com/dispatch/the-clubhouse/',
       match: function() {
-        var elt = document.getElementById('article-dek');
-        return elt ? elt.innerHTML.indexOf('sponsored by') > -1 : false;
+        return selectorContains('#article-dek', 'sponsored by');
       },
       getSponsor: function() {
         var elt = document.getElementById('article-dek');
@@ -406,7 +402,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://on.aol.com/video/moviefone---young-adult---cast-interviews---high-school--sponsored-content--517219863',
       match: function() {
-        return _window.location.href.indexOf('sponsored-content') > -1;
+        return urlContains('sponsored-content');
       },
     },
   ],
@@ -414,7 +410,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://online.wsj.com/ad/article/narratives_brocade_67186.html?prx_t=cpIBAiqcBAu2QFA',
       match: function() {
-        return _window.location.href.indexOf('/ad/') > -1;
+        return urlContains('/ad/');
       },
       getSponsor: function() {
         var elts = document.querySelectorAll('.author a');
@@ -453,7 +449,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://www.pcworld.com/article/2061962/android-keyboard-war-heats-up-as-swiftkey-and-swype-get-big-updates.html',
       match: function() {
-        return document.getElementsByClassName('sponsored-by').length > 0;
+        return classAppears('sponsored-by');
       },
       getSponsor: function() {
         var elts = document.getElementsByClassName('brandpost-blurb');
@@ -468,17 +464,13 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://www.refinery29.com/43774#slide',
       match: function() {
-        var elts = document.getElementsByClassName('slideshow');
-        if (elts.length < 1) {
-          return null;
-        }
-        return elts[0].innerHTML.indexOf('sponsored by') > -1
+        return classContains('slideshow', 'sponsored by');
       },
     },
     {
       example: 'http://www.refinery29.com/cartier-sunglasses#slide',
       match: function() {
-        return document.getElementsByClassName('sponsor-logo-secondary').length > 0;
+        return classAppears('sponsor-logo-secondary');
       },
     },
   ],
@@ -486,7 +478,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'https://screen.yahoo.com/callaway-talks-phil-mickelson-u-140000616.html',
       match: function() {
-        return document.title.indexOf('Sponsored Content') > -1;
+        return titleContains('Sponsored Content');
       },
     },
   ],
@@ -494,7 +486,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://www.seventeen.com/fashion/blog/sponsored-get-an-amazing-makeover-at-school',
       match: function() {
-        return _window.location.href.indexOf('/sponsored-') > -1;
+        return urlContains('/sponsored-');
       },
     },
   ],
@@ -502,7 +494,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://www.slate.com/articles/news_and_politics/uc/2014/06/living_forever_the_right_way.html',
       match: function() {
-        return document.getElementsByClassName('provided-by').length > 0;
+        return classAppears('provided-by');
       },
     },
   ],
@@ -525,8 +517,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://www.suntimes.com/sponsored/28700806-816/live-music-for-every-palate-playing-all-summer-long.html',
       match: function() {
-        return _window.location.href.indexOf('/sponsored/') > -1 ||
-            document.getElementsByClassName('sponsored-heading').length > 0;
+        return urlContains('/sponsored/') || classAppears('sponsored-heading');
       },
     },
   ],
@@ -534,8 +525,8 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://www.theatlantic.com/sponsored/ibm-big-data/big-data-grows-new-role-emerges-chief-data-officer/102/',
       match: function() {
-        return _window.location.href.indexOf('/sponsored/') > -1 ||
-          document.getElementsByClassName('sponsor-warning').length > 0;
+        return urlContains('/sponsored/') > -1 ||
+            classAppears('sponsor-warning');
       },
     },
   ],
@@ -543,7 +534,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://www.theawl.com/2012/06/bbcacopper',
       match: function() {
-        return document.getElementsByClassName('tag-sponsored-content').length > 0;
+        return classAppears('tag-sponsored-content');
       },
     }
   ],
@@ -551,7 +542,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://www.thekitchn.com/recipe-paradise-punch-recipes-from-the-kitchn-205103',
       match: function() {
-        return document.getElementsByClassName('sponsored-post').length > 0;
+        return classAppears('sponsored-post');
       },
     }
   ],
@@ -575,7 +566,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://www.theverge.com/sponsored/intel-future-is-now',
       match: function() {
-        return _window.location.href.indexOf('/sponsored/') > -1;
+        return urlContains('/sponsored/');
       },
     }
   ],
@@ -583,7 +574,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://www.thewrap.com/mockup-secrets-leveraging-nycs-super-bowl-weekend-nyc-paramount-hotels-plan-sponsored-story/',
       match: function() {
-        return _window.location.href.indexOf('sponsored-story') > -1;
+        return urlContains('sponsored-story');
       },
     }
   ],
@@ -591,7 +582,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://tweakers.net/advertorials/werkenbijns',
       match: function() {
-        return _window.location.href.indexOf('/advertorials/') > -1;
+        return urlContains('/advertorials/');
       },
     }
   ],
@@ -599,7 +590,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://www.usatoday.com/story/sponsor-story/dell/2014/05/13/dell-tablets-and-culture/9002541/',
       match: function() {
-        return _window.location.href.indexOf('/sponsor-story/') > -1;
+        return urlContains('/sponsor-story/');
       },
     },
   ],
@@ -607,11 +598,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://www.vanityfair.com/online/oscars/2013/12/hennessy-sir-malcolm-campbell-speed-racer',
       match: function() {
-        var elts = document.getElementsByClassName('rubric');
-        if (elts.length < 1) {
-          return false;
-        }
-        return elts[0].innerHTML === 'SPONSOR CONTENT';
+        return classContains('rubric', 'SPONSOR CONTENT');
       },
     },
   ],
@@ -619,7 +606,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://venturebeat.com/2013/01/31/create-and-design-websites-on-your-pc-with-coffeecup-vb-store/',
       match: function() {
-        return document.getElementsByClassName('partnered-post').length > 0;
+        return classAppears('partnered-post');
       },
       getSponsor: function() {
         var elts = document.getElementsByClassName('the-author');
@@ -635,11 +622,7 @@ _window.AD_DETECTOR_RULES = {
       example: 'http://www.washingtonpost.com/sf/brand-connect/wp/enterprise/one-year-later-a-commitment-renewed/',
       match: function() {
         // TODO Can also check for WP Brand Connect in URL, "left title-bar", or in title
-        var elts = document.querySelectorAll('.bylines .byline .byline-title');
-        if (elts.length < 1) {
-          return false;
-        }
-        return elts[0].innerHTML.indexOf('Sponsor Generated Content') > -1;
+        return selectorContains('.bylines .byline .byline-title', 'Sponsor Generated Content');
       },
     }
   ],
@@ -647,7 +630,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://www.wired.com/partners/netflix/',
       match: function() {
-        return _window.location.href.indexOf('/partners/') > -1;
+        return urlContains('/partners/');
       },
     }
   ],
