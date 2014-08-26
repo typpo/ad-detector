@@ -2,6 +2,8 @@ var fs = require('fs');
 var utils = require('utils');
 var rules = JSON.parse(fs.read('test_url_list'));
 
+casper.userAgent('Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36');
+
 // For loop won't work here for some reason.
 function run(idx) {
   var rule = rules[idx];

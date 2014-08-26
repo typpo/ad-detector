@@ -130,7 +130,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://deadspin.com/5969545/exclusive-could-this-be-chris-pauls-secret-twin-brother',
       match: function() {
-        return classAppears('sponsored-label');
+        return util.classAppears('sponsored-label');
       },
       getSponsor: function() {
         return null;
@@ -224,7 +224,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://gawker.com/5974129/how-to-transform-into-a-total-nerd-babe/',
       match: function() {
-        util.classAppears('sponsored-label');
+        return util.classAppears('sponsored-label');
       },
       getSponsor: function() {
         return null;
