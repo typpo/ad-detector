@@ -61,7 +61,7 @@ function addWarningBanner(rule) {
     var rule = rules[i];
     if (rule.match()) {
       addWarningBanner(rule);
-      break;
+      return;
     }
   }
 })();
