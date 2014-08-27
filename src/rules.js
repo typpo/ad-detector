@@ -86,7 +86,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://www.businessinsider.com/sc/music-city-pizza-owner-keith-hayman-interview-2014-7',
       match: function() {
-        return urlContains('/sc/') || classAppears('tooltip-sponsor');
+        return urlContains('/sc/');
       },
     },
   ],
