@@ -542,15 +542,17 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  // Unfortunately, I can't find a way to match Pando's sponsored articles...
+  /*
   'pando.com': [
     {
       example: 'http://pando.com/2013/03/01/you-shouldnt-be-bored-at-a-board-meeting-pt-2-structure-for-success/',
       match: function() {
-        // No easy way to match their sponsored articles...
         return false;
       },
     },
   ],
+  */
   'pcworld.com': [
     {
       example: 'http://www.pcworld.com/article/2061962/android-keyboard-war-heats-up-as-swiftkey-and-swype-get-big-updates.html',
@@ -702,6 +704,17 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'talkingpointsmemo.com': [
+    {
+      example: 'http://talkingpointsmemo.com/idealab-impact/medicare-partd-affordable-drug-coverage',
+      match: function() {
+        return titleContains('[Sponsored Message]');
+      },
+      getSponsor: function() {
+        return document.querySelector('.main .byline-content').textContent;
+      },
+    },
+  ],
   'theatlantic.com': [
     {
       example: 'http://www.theatlantic.com/sponsored/ibm-big-data/big-data-grows-new-role-emerges-chief-data-officer/102/',
@@ -785,14 +798,19 @@ _window.AD_DETECTOR_RULES = {
       },
     }
   ],
+  // Omitting this for now, because paid articles are always included with
+  // normal articles, making them very difficult to detect (unless we check on
+  // scroll).
+  /*
   'tribtalk.org': [
     {
       example: 'http://tribtalk.org/2014/07/30/fixing-whats-wrong-with-testing-in-k-12-education/',
       match: function() {
-        return classAppears('category-paid-placement');
+        return selectorAppears('.category-paid-placement .byline');
       },
     }
   ],
+  */
   'tweakers.net': [
     {
       example: 'http://tweakers.net/advertorials/werkenbijns',
