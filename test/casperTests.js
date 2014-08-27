@@ -17,7 +17,7 @@ casper.options.onStepTimeout = function(request) {
 };
 casper.options.pageSettings.loadImages = false;
 casper.options.pageSettings.loadPlugins = false;
-casper.options.pageSettings.resourceTimeout = 1000;
+casper.options.pageSettings.resourceTimeout = 6*1000;
 
 casper.test.begin('Banner loads on example pages, without false positives',
                   rules.length*2, function(test) {
