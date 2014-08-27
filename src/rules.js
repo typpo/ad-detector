@@ -841,12 +841,21 @@ _window.AD_DETECTOR_RULES = {
       }
     }
   ],
+  'vox.com': [
+    {
+      example: 'http://www.vox.com/sponsored/goldman-sachs-naes/episode-1-the-north-american-energy-opportunity',
+      match: function() {
+        return urlContains('/sponsored/');
+      },
+    }
+  ],
   'washingtonpost.com': [
     {
       example: 'http://www.washingtonpost.com/sf/brand-connect/wp/enterprise/one-year-later-a-commitment-renewed/',
       match: function() {
         // TODO Can also check for WP Brand Connect in URL, "left title-bar", or in title
-        return selectorContains('.bylines .byline .byline-title', 'Sponsor Generated Content');
+        return selectorContains('.bylines .byline .byline-title',
+                                'Sponsor Generated Content');
       },
     }
   ],
