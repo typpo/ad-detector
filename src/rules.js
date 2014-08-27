@@ -613,7 +613,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://qz.com/241614/reducing-indias-dependence-on-foreign-oil-and-gas/',
       match: function() {
-        return selectorContains('.view #items .kicker' 'Sponsor Content');
+        return selectorContains('.view #items .kicker', 'Sponsor Content');
       },
     },
   ],
