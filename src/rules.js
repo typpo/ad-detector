@@ -86,6 +86,18 @@ _window.AD_DETECTOR_RULES = {
       },
     }
   ],
+  'business.financialpost.com': [
+    {
+      example: 'http://business.financialpost.com/2013/06/26/a-joint-venture-with-capp-oil-industry-set-to-grow/?__lsa=95bf-d411',
+      match: function() {
+        return selectorContains('#npContentMain .big-sponsored-label', 'Sponsored');
+      },
+      getSponsor: function() {
+        return document.querySelector('.big-sponsored-label').textContent
+            .replace('Sponsored by ', '');
+      },
+    },
+  ],
   'business.time.com': [
     {
       example: 'http://business.time.com/2013/07/12/a-game-plan-for-the-future/',
@@ -122,6 +134,14 @@ _window.AD_DETECTOR_RULES = {
       example: 'http://www.businessinsider.com/sc/music-city-pizza-owner-keith-hayman-interview-2014-7',
       match: function() {
         return urlContains('/sc/');
+      },
+    },
+  ],
+  'canadianfamily.ca': [
+    {
+      example: 'http://www.canadianfamily.ca/kids/baby/your-guide-to-baby-massage-sponsored/',
+      match: function() {
+        return urlContains('-sponsored/');
       },
     },
   ],
@@ -183,6 +203,14 @@ _window.AD_DETECTOR_RULES = {
       }
     }
   ],
+  'dnainfo.com': [
+    {
+      example: 'http://www.dnainfo.com/new-york/sponsor-story/?mvi=8ca5f068f5b249b88f359b7dcc8ca6a0',
+      match: function() {
+        return urlContains('/sponsor-story/');
+      },
+    },
+  ],
   'ew.com': [
     {
       example: 'http://www.ew.com/ew/gallery/0,,20308916_20447484_20885831,00.html',
@@ -223,6 +251,26 @@ _window.AD_DETECTOR_RULES = {
       example: 'http://www.foodandwine.com/articles/lindt-falls-best-wine-pairings',
       match: function() {
         return classAppears('sponsor-info');
+      },
+    },
+  ],
+  'foodrepublic.com': [
+    {
+      example: 'http://www.foodrepublic.com/2014/05/15/whimsical-grilling-leif-hedendal',
+      match: function() {
+        return selectorContains('.node-type-story .rubric a', 'Sponsored Post');
+      },
+    },
+  ],
+  'foodnetwork.com': [
+    {
+      example: 'http://www.foodnetwork.com/recipes/orange-sorbet-recipe.html?COUPON=07-0094-01&bid=847241',
+      match: function() {
+        return selectorContains('.lead-overview .copyright', 'Sponsor Recipe');
+      },
+      getSponsor: function() {
+        return document.querySelector('.lead-overview .copyright').textContent
+            .replace('Sponsor Recipe Courtesy of ', '');
       },
     },
   ],
@@ -334,6 +382,14 @@ _window.AD_DETECTOR_RULES = {
       },
     }
   ],
+  'inc.com': [
+    {
+      example: 'http://www.inc.com/theupsstore/index.html',
+      match: function() {
+        return selectorAppears('#cobrand');
+      },
+    }
+  ],
   'innovationinsights.wired.com': [
     {
       example: 'http://innovationinsights.wired.com/insights/2014/03/cloud-finding-way-fog/',
@@ -343,7 +399,7 @@ _window.AD_DETECTOR_RULES = {
       shouldRootDomainTrigger: true,
       getSponsor: function() {
         return 'IBM';
-      }
+      },
     }
   ],
   'latimes.com': [
@@ -618,6 +674,17 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  // They just show an image, so there's no easy way to tell.
+  /*
+  'readwrite.com': [
+    {
+      example: 'http://readwrite.com/2014/03/14/api-explainer-intel#awesm=~oDCS7ICV27l5BC',
+      match: function() {
+        return false;
+      },
+    },
+  ],
+  */
   'recode.net': [
     {
       example: 'http://recode.net/sponsored-content/the-future-of-content-its-a-journey-not-a-destination/',
