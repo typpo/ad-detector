@@ -297,7 +297,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://www.latimes.com/brandpublishing/localplus/ucsandiego/la-ss-ucsd-playhouse-dto-story.html',
       match: function() {
-        return urlContains('/brandpublishing');
+        return urlContains('/brandpublishing/');
       },
     },
   ],
@@ -462,7 +462,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://pando.com/2013/03/01/you-shouldnt-be-bored-at-a-board-meeting-pt-2-structure-for-success/',
       match: function() {
-        // Haven't figured out how to match their sponsored articles...
+        // No easy way to match their sponsored articles...
         return false;
       },
     },
