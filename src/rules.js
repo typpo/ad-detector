@@ -156,7 +156,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://deadspin.com/5969545/exclusive-could-this-be-chris-pauls-secret-twin-brother',
       match: function() {
-        return classAppears('sponsored-label');
+        return selectorAppears('.content-wrapper .sponsored-label');
       },
     },
   ],
