@@ -15,7 +15,7 @@ casper.options.onStepTimeout = function() {
 };
 
 casper.test.begin('Banner loads on example pages, without false positives',
-                  rules.length, function(test) {
+                  rules.length*2, function(test) {
   var testBanner = function(url, expectVisible) {
     this.page.injectJs('../src/rules.js');
     this.page.injectJs('../src/inject.js');
