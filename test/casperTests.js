@@ -1,12 +1,12 @@
 /**
- * This test runs the extension end-to-end for a list of urls in test_url_list,
+ * This test runs the extension end-to-end for a list of urls in url_list,
  * verifying that all urls trigger the banner.
  */
 
 var TIMEOUT = 1 * 60 * 1000;  // per site, in ms
 var fs = require('fs');
 var utils = require('utils');
-var rules = JSON.parse(fs.read('test_url_list'));
+var rules = JSON.parse(fs.read('url_list'));
 
 casper.userAgent('Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36');
 casper.options.stepTimeout = TIMEOUT;
@@ -16,7 +16,8 @@ casper.options.onStepTimeout = function(request) {
   //request.abort();
 };
 casper.options.pageSettings.loadImages = false;
-casper.options.pageSettings.resourceTimeout = 30*1000;
+casper.options.pageSettings.loadPlugins = false;
+casper.options.pageSettings.resourceTimeout = 1000;
 
 casper.test.begin('Banner loads on example pages, without false positives',
                   rules.length*2, function(test) {

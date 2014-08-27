@@ -6,7 +6,7 @@ firefox/data/*
 *.zip
 *debuglog.txt
 
-test/test_url_list
+test/url_list
 
 node_modules
 

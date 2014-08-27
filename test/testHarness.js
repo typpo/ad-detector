@@ -28,12 +28,12 @@ if (process.argv.length > 2) {
   }
 }
 
-fs.writeFile('test_url_list', JSON.stringify(rules, null, 2), function(err) {
+fs.writeFile('url_list', JSON.stringify(rules, null, 2), function(err) {
   if (err) {
     console.error('Could not write local file test_url_list.');
   }
 
-  var casperTests =  spawn('casperjs', ['test', 'casperTests.js']);
+  var casperTests =  spawn('casperjs', ['test', 'casperTests.js', '--proxy_type=none']);
   var log = function(data) { console.log(data + ''); };
   casperTests.stdout.on('data', log);
   casperTests.stderr.on('data', log);
