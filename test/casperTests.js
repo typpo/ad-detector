@@ -10,9 +10,13 @@ var rules = JSON.parse(fs.read('test_url_list'));
 
 casper.userAgent('Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36');
 casper.options.stepTimeout = TIMEOUT;
-casper.options.onStepTimeout = function() {
-  test.assert(false, 'Timed out');
+casper.options.onStepTimeout = function(request) {
+  //this.test.assert(false, 'Timed out');
+  casper.echo('Timed out');
+  //request.abort();
 };
+casper.options.pageSettings.loadImages = false;
+casper.options.pageSettings.resourceTimeout = 30*1000;
 
 casper.test.begin('Banner loads on example pages, without false positives',
                   rules.length*2, function(test) {
