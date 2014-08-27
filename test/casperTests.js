@@ -28,9 +28,9 @@ casper.test.begin('Banner loads on example pages, without false positives',
       return document.querySelector('.ad-detector-banner') !== null;
     });
     if (expectVisible) {
-      test.assert(bannerIsVisible, 'Banner is visible on ' + url);
+      test.assert(bannerIsVisible, 'Banner should be visible on ' + url);
     } else {
-      test.assert(!bannerIsVisible, 'Banner isn\'t visible on ' + url);
+      test.assert(!bannerIsVisible, 'Banner should *not* be visible on ' + url);
     }
   };
 
