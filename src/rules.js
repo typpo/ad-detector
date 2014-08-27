@@ -11,6 +11,8 @@ var _window = typeof unsafeWindow === 'undefined' ? window : unsafeWindow;
  * Optional -
  * getSponsor: Returns the name of the sponsor. Null if unknown.
  * getCustomMessage: Returns a custom message to show on the warning banner.
+ * shouldRootDomainTrigger: True if we expect the root domain to trigger the
+ *    banner. Otherwise it is considered a false positive during testing.
  */
 _window.AD_DETECTOR_RULES = {
   'ad-assets.nytimes.com': [
@@ -19,6 +21,7 @@ _window.AD_DETECTOR_RULES = {
       match: function() {
         return true;
       },
+      shouldRootDomainTrigger: true,
       getSponsor: function() {
         var paidElts = document.getElementsByClassName('paid-head-tag');
         if (paidElts.length < 1) {
@@ -284,6 +287,7 @@ _window.AD_DETECTOR_RULES = {
       match: function() {
         return true;
       },
+      shouldRootDomainTrigger: true,
       getSponsor: function() {
         return 'IBM';
       }
@@ -363,6 +367,7 @@ _window.AD_DETECTOR_RULES = {
       match: function() {
         return true;
       },
+      shouldRootDomainTrigger: true,
     },
   ],
   'newsweek.com': [
@@ -443,6 +448,7 @@ _window.AD_DETECTOR_RULES = {
       match: function() {
         return true;
       },
+      shouldRootDomainTrigger: true,
       getSponsor: function() {
         var paidElts = document.getElementsByClassName('paid-top-border-txt');
         if (paidElts.length < 1) {

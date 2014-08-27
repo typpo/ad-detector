@@ -1,9 +1,6 @@
 /**
  * This test runs the extension end-to-end for a list of urls in test_url_list,
  * verifying that all urls trigger the banner.
- *
- * TODO Simple checks to avoid false positives - for example, root page should
- * not trigger a banner in most cases.
  */
 
 var TIMEOUT = 3 * 60 * 1000;  // per site, in ms
@@ -17,26 +14,40 @@ casper.options.onStepTimeout = function() {
   casper.echo('Test timed out');
 };
 
-// For loop won't work here for some reason.
-function run(idx) {
-  if (idx >= rules.length) return;
-  this.idx = idx;
-  var rule = rules[idx];
-  casper.test.begin('Banner appears on ' + rule.example,
-                    1, function(test) {
-    casper.start(rule.example, function() {
-      this.page.injectJs('../src/rules.js');
-      this.page.injectJs('../src/inject.js');
-      var bannerIsVisible = this.evaluate(function () {
-        return document.querySelector('.ad-detector-banner') !== null;
-      });
-      test.assert(bannerIsVisible);
+casper.test.begin('Banner loads on example pages, without false positives',
+                  rules.length, function(test) {
+  var testBanner = function(url, expectVisible) {
+    this.page.injectJs('../src/rules.js');
+    this.page.injectJs('../src/inject.js');
+    var bannerIsVisible = this.evaluate(function () {
+      return document.querySelector('.ad-detector-banner') !== null;
     });
+    if (expectVisible) {
+      test.assert(bannerIsVisible, 'Banner is visible on ' + url);
+    } else {
+      test.assert(!bannerIsVisible, 'Banner isn\'t visible on ' + url);
+    }
+  };
 
-    casper.run(function() {
-      test.done();
-      run(idx + 1);
+  casper.start().each(rules, function(self, rule) {
+    self.then(function() {
+      casper.echo('Loading ' + rule.example + ' ...');
+    });
+    self.thenOpen(rule.example, function() {
+      testBanner.call(this, rule.example, true);
+    });
+    self.then(function() {
+      casper.echo('Loading ' + rule.root + ' ...');
+    });
+    self.thenOpen(rule.root, function() {
+      if (rule.shouldRootDomainTrigger) {
+        testBanner.call(this, rule.root, true);
+      } else {
+        testBanner.call(this, rule.root, false);
+      }
     });
   });
-}
-run(0);
+  casper.run(function() {
+    test.done();
+  });
+});

@@ -20,6 +20,7 @@ if (process.argv.length > 2) {
 } else {
   for (var key in window.AD_DETECTOR_RULES) {
     window.AD_DETECTOR_RULES[key].map(function(rule) {
+      rule.root = 'http://' + key;
       rules.push(rule);
     });
   }
