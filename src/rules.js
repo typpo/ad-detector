@@ -649,7 +649,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://venturebeat.com/2013/01/31/create-and-design-websites-on-your-pc-with-coffeecup-vb-store/',
       match: function() {
-        return classAppears('partnered-post');
+        return classAppears('partnered-post') && !classAppears('entry-summary');
       },
       getSponsor: function() {
         var elts = document.getElementsByClassName('the-author');
