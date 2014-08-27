@@ -858,6 +858,14 @@ _window.AD_DETECTOR_RULES = {
       }
     }
   ],
+  'vice.com': [
+    {
+      example: 'http://www.vice.com/ketelone/modern-craftsmen-gregory-laketek',
+      match: function() {
+        return urlContains('/ketelone/');
+      },
+    }
+  ],
   'vox.com': [
     {
       example: 'http://www.vox.com/sponsored/goldman-sachs-naes/episode-1-the-north-american-energy-opportunity',
