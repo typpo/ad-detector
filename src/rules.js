@@ -219,7 +219,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://gawker.com/5974129/how-to-transform-into-a-total-nerd-babe/',
       match: function() {
-        return classAppears('sponsored-label');
+        return selectorAppears('.content-wrapper .sponsored-label');
       },
     },
   ],
