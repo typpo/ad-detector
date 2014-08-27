@@ -31,6 +31,14 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'arstechnica.com': [
+    {
+      example: 'http://arstechnica.com/sponsored/it-consumption-model-interactive-infographic/',
+      match: function() {
+        return urlContains('/sponsored/');
+      },
+    },
+  ],
   'betabeat.com': [
     {
       example: 'http://betabeat.com/2013/03/vote-for-your-favorite-startups-the-pitch-lerer-ventures-softbank-capital/',
@@ -43,11 +51,38 @@ _window.AD_DETECTOR_RULES = {
       }
     }
   ],
+  'bizjournals.com': [
+    {
+      example: 'http://www.bizjournals.com/houston/bizwomen/channels/pnc/2014/08/for-businesses-green-is-here-to-stay.html',
+      match: function() {
+        return selectorContains('.article .meta-item', 'Sponsor Content');
+      },
+      getSponsor: function() {
+        return document.querySelector('.article__byline').firstChild.textContent.replace('Sponsor post from ', '');
+      }
+    }
+  ],
   'blogs.vancouversun.com': [
     {
       example: 'http://blogs.vancouversun.com/2014/03/12/cyberwarfare-expert-cancels-vancouver-talk-over-fear-of-revealing-critical-infrastructure-risks/',
       match: function() {
         return classAppears('tag-sponsored');
+      },
+    }
+  ],
+  'bloomberg.com': [
+    {
+      example: 'http://www.bloomberg.com/native/article/?mvi=8a0a327343df4ca0b503d03a93deebd2',
+      match: function() {
+        return urlContains('/native/');
+      },
+    }
+  ],
+  'bostonmagazine.com': [
+    {
+      example: 'http://www.bostonmagazine.com/sponsor-content/healthy/',
+      match: function() {
+        return urlContains('/sponsor-content/');
       },
     }
   ],
@@ -223,6 +258,14 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'gearpatrol.com': [
+    {
+      example: 'http://gearpatrol.com/2014/08/04/nobody-wins-counterfeit-batteries/',
+      match: function() {
+        return classContains('orange-box', 'Sponsored Post');
+      },
+    },
+  ],
   'gigaom.com': [
     {
       example: 'http://gigaom.com/2014/08/19/are-we-there-yet-it-teams-share-plans-and-concerns-with-saas/',
@@ -249,6 +292,17 @@ _window.AD_DETECTOR_RULES = {
         return selectorContains('.post', 'sponsored by');
       },
     }
+  ],
+  'gothamist.com': [
+    {
+      example: 'http://gothamist.com/2014/06/16/opposites_attract_the_best_nyc_date_1.php',
+      match: function() {
+        return
+            document.querySelector('#entry-content ' +
+                'a[href="/tags/gothamistcollaboration"]') !== null &&
+                selectorContains('.byline .author', 'Sponsor');
+      },
+    },
   ],
   'homes.yahoo.com': [
     {
@@ -329,6 +383,17 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'marketwatch.com': [
+    {
+      example: 'http://www.marketwatch.com/ad/article/narratives?prx_t=RpABA5q0BAICAFA&prx_q=8163',
+      match: function() {
+        return urlContains('/ad/');
+      },
+      getSponsor: function() {
+        return document.querySelector('.author a').textContent;
+      },
+    },
+  ],
   'mediaite.com': [
     {
       example: 'http://www.mediaite.com/tv/nbcs-rock-center-with-brian-williams-something-for-everyone/',
@@ -339,6 +404,15 @@ _window.AD_DETECTOR_RULES = {
         var elt = document.getElementById('article-dek');
         return elt ? elt.innerHTML.replace('Content sponsored by ', '') : null;
       },
+    },
+  ],
+  'messages.people.com': [
+    {
+      example: 'http://messages.people.com/sponsored-post-jetblue/',
+      match: function() {
+        return true;
+      },
+      shouldRootDomainTrigger: true,
     },
   ],
   'money.msn.com': [
@@ -361,13 +435,24 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
-  'messages.people.com': [
+  'msnbc.com': [
     {
-      example: 'http://messages.people.com/sponsored-post-jetblue/',
+      example: 'http://www.msnbc.com/msnbc/landfill-fuels-frances-energy-future',
       match: function() {
-        return true;
+        return selectorAppears('.content .pane-native-ad-sponsor');
       },
-      shouldRootDomainTrigger: true,
+    },
+  ],
+  'newrepublic.com': [
+    {
+      example: 'http://www.newrepublic.com/article/118883/millennials-dont-want-climb-traditional-career-ladder',
+      match: function() {
+        return selectorContains('.story .category', 'Sponsored Content');
+      },
+      getSponsor: function() {
+        return document.querySelector('.body .introduction').textContent.trim()
+            .replace('Sponsored by ', '');
+      },
     },
   ],
   'newsweek.com': [
@@ -482,6 +567,34 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'phillymag.com': [
+    {
+      example: 'http://www.phillymag.com/sponsor-content/grilling-gets-healthy-makeover/',
+      match: function() {
+        return urlContains('/sponsor-content/');
+      },
+      getSponsor: function() {
+        return document.querySelector('.presented-by').textContent
+            .replace('Presented by ', '');
+      },
+    },
+  ],
+  'pioneerlocal.suntimes.com': [
+    {
+      example: 'http://pioneerlocal.suntimes.com/sponsored/?post=1486-What%20are%20the%20possible%20causes%20of%20your%20ankle%20pain%3F&sponsor=342412-Hinsdale%20Foot%20%26%20Ankle',
+      match: function() {
+        return urlContains('/sponsored/');
+      },
+    },
+  ],
+  'politico.com': [
+    {
+      example: 'http://www.politico.com/magazine/sponsor-content/2014/07/to-save-detroit-start-small/#.U9fGvoBdVv0',
+      match: function() {
+        return urlContains('/sponsor-content/');
+      },
+    },
+  ],
   'prnewswire.com': [
     {
       example: 'http://www.prnewswire.com/news-releases/urban-tours-offer-fun-for-foodies-272620221.html',
@@ -493,6 +606,22 @@ _window.AD_DETECTOR_RULES = {
       },
       getCustomMessage: function() {
         return 'This article is a press release paid for by ' + this.getSponsor();
+      },
+    },
+  ],
+  'qz.com': [
+    {
+      example: 'http://qz.com/241614/reducing-indias-dependence-on-foreign-oil-and-gas/',
+      match: function() {
+        return selectorContains('.view #items .kicker' 'Sponsor Content');
+      },
+    },
+  ],
+  'recode.net': [
+    {
+      example: 'http://recode.net/sponsored-content/the-future-of-content-its-a-journey-not-a-destination/',
+      match: function() {
+        return urlContains('/sponsored-content/');
       },
     },
   ],
@@ -542,6 +671,15 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'studioatgawker.kinja.com': [
+    {
+      example: 'http://studioatgawker.kinja.com/new-technology-will-set-your-previously-pc-bound-games-1620845289',
+      match: function() {
+        return true;
+      },
+      shouldRootDomainTrigger: true,
+    },
+  ],
   'stylemepretty.com': [
     {
       example: 'http://www.stylemepretty.com/2014/08/19/alexandra-grecco-a-discount-a-giveaway-2/',
@@ -581,6 +719,17 @@ _window.AD_DETECTOR_RULES = {
       },
     }
   ],
+  'thedailybeast.com': [
+    {
+      example: 'http://www.thedailybeast.com/articles/2014/05/29/will-you-choose-a-conflict-free-microprocessor.html',
+      match: function() {
+        return selectorAppears('article .partnerad');
+      },
+      getSponsor: function() {
+        return document.querySelector('.article-main-content .section').textContent;
+      },
+    }
+  ],
   'thekitchn.com': [
     {
       example: 'http://www.thekitchn.com/recipe-paradise-punch-recipes-from-the-kitchn-205103',
@@ -605,6 +754,14 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'thestar.com': [
+    {
+      example: 'http://www.thestar.com/sponsored_sections/dailyhealth.html',
+      match: function() {
+        return urlContains('/sponsored_sections/');
+      },
+    }
+  ],
   'theverge.com': [
     {
       example: 'http://www.theverge.com/sponsored/intel-future-is-now',
@@ -621,6 +778,22 @@ _window.AD_DETECTOR_RULES = {
       },
     }
   ],
+  'thoughtcatalog.com': [
+    {
+      example: 'http://thoughtcatalog.com/thought-catalog-sponsored-posts/2014/07/23-incredible-summer-photos-that-will-make-you-book-your-vacation-tomorrow/',
+      match: function() {
+        return urlContains('/thought-catalog-sponsored-posts/');
+      },
+    }
+  ],
+  'tribtalk.org': [
+    {
+      example: 'http://tribtalk.org/2014/07/30/fixing-whats-wrong-with-testing-in-k-12-education/',
+      match: function() {
+        return classAppears('category-paid-placement');
+      },
+    }
+  ],
   'tweakers.net': [
     {
       example: 'http://tweakers.net/advertorials/werkenbijns',
@@ -628,6 +801,14 @@ _window.AD_DETECTOR_RULES = {
         return urlContains('/advertorials/');
       },
     }
+  ],
+  'upworthy.com': [
+    {
+      example: 'https://www.upworthy.com/30-seconds-of-women-over-apologizing-followed-by-30-seconds-of-them-so-destroying-that-stereotype',
+      match: function() {
+        return selectorAppears('.sponsored-section #promoted-header');
+      },
+    },
   ],
   'usatoday.com': [
     {
@@ -674,6 +855,22 @@ _window.AD_DETECTOR_RULES = {
       example: 'http://www.wired.com/partners/netflix/',
       match: function() {
         return urlContains('/partners/');
+      },
+    }
+  ],
+  'xojane.com': [
+    {
+      example: 'http://www.xojane.com/we-were-paid-for-this/my-favorite-things-lasvegas-day',
+      match: function() {
+        return urlContains('/we-were-paid-for-this/');
+      },
+    }
+  ],
+  'yahoo.com': [
+    {
+      example: 'https://www.yahoo.com/tech/spark-ignites-match-how-sam-yagan-became-the-dominant-a81624092647.html',
+      match: function() {
+        return selectorContains('.byline .attribution-name', 'Brought to you by');
       },
     }
   ],
