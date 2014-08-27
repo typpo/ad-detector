@@ -14,7 +14,9 @@ var rulesModule = require('../src/rules.js');
 var rules = [];
 if (process.argv.length > 2) {
   // Grab just the rules for supplied site.
-  window.AD_DETECTOR_RULES[process.argv[2]].map(function(rule) {
+  var key = process.argv[2];
+  window.AD_DETECTOR_RULES[key].map(function(rule) {
+    rule.root = 'http://' + key;
     rules.push(rule);
   });
 } else {
