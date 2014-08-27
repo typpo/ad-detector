@@ -297,8 +297,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://gothamist.com/2014/06/16/opposites_attract_the_best_nyc_date_1.php',
       match: function() {
-        return
-            document.querySelector('#entry-content ' +
+        return document.querySelector('#entry-content ' +
                 'a[href="/tags/gothamistcollaboration"]') !== null &&
                 selectorContains('.byline .author', 'Sponsor');
       },
