@@ -326,9 +326,6 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://gigaom.com/2014/08/19/are-we-there-yet-it-teams-share-plans-and-concerns-with-saas/',
       match: function() {
-        if (classAppears('sponsor-title')) {
-          return true;
-        }
         var elts = document.querySelectorAll('meta[property="article:tag"]');
         for (var i=0; i < elts.length; i++) {
           var elt = elts[i];
