@@ -478,6 +478,14 @@ _window.AD_DETECTOR_RULES = {
       shouldRootDomainTrigger: true,
     },
   ],
+  'mic.com': [
+    {
+      example: 'http://mic.com/articles/96860/two-engineers-have-created-the-doll-every-young-girl-should-be-playing-with',
+      match: function() {
+        return selectorAppears('article section .spon-image');
+      },
+    },
+  ],
   'money.msn.com': [
     {
       example: 'http://money.msn.com/small-business-smarts/transit-connect.aspx',
