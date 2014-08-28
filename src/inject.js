@@ -38,7 +38,7 @@ function addWarningBanner(rule) {
   } catch (err) {}
 
   var displayMessage = rule.getCustomMessage ? rule.getCustomMessage() :
-      'This page is an advertisement ' + 'paid for by ' +
+      'This page is an ad ' + 'paid for by ' +
           (sponsorName || 'a sponsor');
 
   var text = '[AdDetector] ' + displayMessage + '&nbsp;&times;';
