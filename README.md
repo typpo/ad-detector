@@ -1,10 +1,8 @@
 # AdDetector
 
-AdDetector is a Chrome and Firefox addon that detects articles with corporate sponsors and puts a red banner above articles that may mislead the reader.
+AdDetector is a Chrome and Firefox addon that flags articles with corporate sponsors by putting a banner above articles that may mislead the reader.
 
-"[Native advertising](https://en.wikipedia.org/wiki/Native_advertising)" is a type of advertising that presents ads as journalism or unbiased articles.
-
-This technique is used by publications like the New York Times, Newsweek, The Atlantic, Buzzfeed, and others. Stories are sometimes marked as sponsored, but these indicators are typically very subtle, leaving many users unaware that the article is sponsored.
+"Corporate content" is present in publications like the New York Times, Newsweek, The Atlantic, Buzzfeed, and others. Stories are sometimes marked as sponsored, but these indicators are sometimes very subtle, leaving many users unaware that the article is sponsored.
 
 AdDetector contains rules to identify small "sponsored" markings. In some cases, these indicators are not even visible normally and instead are hidden in the source code of the webpage.
 
@@ -14,11 +12,15 @@ Get the latest download links on the [AdDetector site](http://ianww.com/ad-detec
 
 ## Running from source
 
-Run `./setup_hardlinks` before you load the Chrome or Firefox plugins.  This will connect the generic code in `src/` to the proper locations in the browser-specific subdirectories.  To make changes to injected code, you only need to edit in `src/` directly.  They have to be hardlinks because browsers won't follow symlinks.
+Start by running `./setup_hardlinks`.
+
+The hardlinks connect generic code in `src/` to the proper locations in browser-specific subdirectories (browsers won't follow symlinks).  To make changes to injected code, you only need to edit files under `src/`.
+
+Next, run the extension locally in your browser of choice.  For Chrome, go to chrome://extensions, enable developer mode, and load the `chrome/` directory.  For Firefox, set up your sdk and run `cfx run` in the `firefox/` directory.
 
 ## Contributing
 
-I value contributions.  Looking for an easy way to get involved?  Add a [rule](https://github.com/typpo/ad-detector/blob/master/src/rules.js) for a site currently not covered by AdDetector.  Please open pull requests on this Github repository.
+I value contributions.  Looking for an easy way to get involved?  Add a [rule](https://github.com/typpo/ad-detector/blob/master/src/rules.js) for a site currently not covered by AdDetector, or check out the issues page.  Please open pull requests on this Github repository.
 
 ## License (MIT)
 
