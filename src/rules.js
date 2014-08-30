@@ -39,6 +39,14 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'bbc.com': [
+    {
+      example: 'http://www.bbc.com/travel/sponsored/feature/20130925-putting-the-romance-in-adventure-travel',
+      match: function() {
+        return urlContains('/sponsored/');
+      },
+    },
+  ],
   'betabeat.com': [
     {
       example: 'http://betabeat.com/2013/03/vote-for-your-favorite-startups-the-pitch-lerer-ventures-softbank-capital/',
