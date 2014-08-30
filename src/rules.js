@@ -817,6 +817,14 @@ _window.AD_DETECTOR_RULES = {
       },
     }
   ],
+  'theguardian.com': [
+    {
+      example: 'http://www.theguardian.com/sustainable-business/2014/jul/18/ben-jerry-turn-ice-cream-into-energy',
+      match: function() {
+        return selectorAppears('meta[property="article:tag"][content*="Partner zone"]');
+      },
+    }
+  ],
   'thekitchn.com': [
     {
       example: 'http://www.thekitchn.com/recipe-paradise-punch-recipes-from-the-kitchn-205103',
