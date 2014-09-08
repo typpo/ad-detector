@@ -31,6 +31,14 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'adformatie.nl': [
+    {
+      example: 'https://www.adformatie.nl/advertorial/met-de-reclamefolder-app-op-stap',
+      match: function() {
+        return urlContains('/advertorial/');
+      },
+    },
+  ],
   'arstechnica.com': [
     {
       example: 'http://arstechnica.com/sponsored/it-consumption-model-interactive-infographic/',
@@ -953,6 +961,14 @@ _window.AD_DETECTOR_RULES = {
         return urlContains('/ketelone/');
       },
     }
+  ],
+  'volkskrant.nl': [
+    {
+      example: 'http://www.volkskrant.nl/vk/nl/11630/Advertorial-Donorweek/index.dhtml',
+      match: function() {
+        return urlContains('/Advertorial');
+      },
+    },
   ],
   'vox.com': [
     {
