@@ -752,6 +752,15 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'sponsored.postandcourier.com': [
+    {
+      example: 'http://sponsored.postandcourier.com/palmetto-place/',
+      match: function() {
+        return true;
+      },
+      shouldRootDomainTrigger: true,
+    },
+  ],
   'slate.com': [
     {
       example: 'http://www.slate.com/articles/news_and_politics/uc/2014/06/living_forever_the_right_way.html',
