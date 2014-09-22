@@ -673,6 +673,14 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'politiken.dk': [
+    {
+      example: 'http://politiken.dk/annoncesektion/ibm/ECE2192847/digital-bodyguard-beskytter-mod-identitetstyveri/',
+      match: function() {
+        return urlContains('/annoncesektion/');
+      },
+    },
+  ],
   'prnewswire.com': [
     {
       example: 'http://www.prnewswire.com/news-releases/urban-tours-offer-fun-for-foodies-272620221.html',
