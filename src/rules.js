@@ -679,6 +679,13 @@ _window.AD_DETECTOR_RULES = {
       match: function() {
         return urlContains('/annoncesektion/');
       },
+      getSponsor: function() {
+        var paidElts = document.getElementsByClassName('disclaimer');
+        if (paidElts.length < 1) {
+          return null;
+        }
+        return paidElts[0].innerHTML.replace('Annoncørindhold fra ', '');
+      },
     },
   ],
   'prnewswire.com': [
