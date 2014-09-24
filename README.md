@@ -1,6 +1,6 @@
 # AdDetector
 
-AdDetector is a Chrome and Firefox addon that flags articles with corporate sponsors by putting a banner above articles that may mislead the reader.
+AdDetector is a Chrome and Firefox addon that flags articles with corporate sponsors by putting a banner above articles which may mislead the reader.
 
 "Corporate content" is present in publications like the New York Times, Newsweek, The Atlantic, Buzzfeed, and others. Stories are sometimes marked as sponsored, but these indicators are sometimes very subtle, leaving many users unaware that the article is sponsored.
 
