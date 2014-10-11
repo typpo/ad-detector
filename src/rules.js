@@ -830,12 +830,12 @@ _window.AD_DETECTOR_RULES = {
   ],
   'thedailybeast.com': [
     {
-      example: 'http://www.thedailybeast.com/articles/2014/05/29/will-you-choose-a-conflict-free-microprocessor.html',
+      example: 'http://www.thedailybeast.com/articles/2014/09/30/how-we-compute-flexible-hardware-required.html',
       match: function() {
-        return selectorAppears('article .partnerad');
+        return selectorAppears('article[data-index='1'] .partnerad');
       },
       getSponsor: function() {
-        return document.querySelector('.article-main-content .section').textContent;
+        return document.querySelector('article[data-index="1"] .article-main-content .section').textContent;
       },
     }
   ],
