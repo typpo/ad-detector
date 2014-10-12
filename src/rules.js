@@ -832,7 +832,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://www.thedailybeast.com/articles/2014/09/30/how-we-compute-flexible-hardware-required.html',
       match: function() {
-        return selectorAppears('article[data-index='1'] .partnerad');
+        return selectorAppears('article[data-index="1"] .partnerad');
       },
       getSponsor: function() {
         return document.querySelector('article[data-index="1"] .article-main-content .section').textContent;
