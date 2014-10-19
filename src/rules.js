@@ -201,7 +201,7 @@ _window.AD_DETECTOR_RULES = {
       example: 'http://www.denverpost.com/tablehome/ci_14493215?source=rss',
       match: function() {
         var elt = document.getElementById('articleOverline');
-        return urlContains('/sponsored') ||
+        return urlContains('/sponsored') || titleContains('SPONSORED') ||
           selectorContains('#articleOverline', 'SPONSORED CONTENT');
       },
     },
