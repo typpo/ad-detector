@@ -474,6 +474,17 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'medium.com': [
+    {
+      example: 'https://medium.com/re-form/simcity-that-i-used-to-know-d5d8c49e3e1d',
+      match: function() {
+        return urlContains('/re-form/');
+      },
+      getSponsor: function() {
+        return 'BMW';
+      },
+    },
+  ],
   'messages.people.com': [
     {
       example: 'http://messages.people.com/sponsored-post-jetblue/',
