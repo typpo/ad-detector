@@ -927,6 +927,14 @@ _window.AD_DETECTOR_RULES = {
     }
   ],
   */
+  'timesunion.com': [
+    {
+      example: 'http://www.timesunion.com/sponsoredarticles/adv/?prx_t=+Z0BA+OUBAgw4FA',
+      match: function() {
+        return urlContains('/sponsoredarticles/');
+      },
+    }
+  ],
   'tweakers.net': [
     {
       example: 'http://tweakers.net/advertorials/werkenbijns',
