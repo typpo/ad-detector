@@ -47,6 +47,9 @@ function addWarningBanner(rule) {
 
   banner.onclick = function() {
     this.remove();
+  };
+  textElt.onclick = function() {
+    this.parentNode.remove();
   }
 }
 
