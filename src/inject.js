@@ -55,6 +55,12 @@ function addWarningBanner(rule) {
 
 
 (function run() {
+  if (typeof _window.AD_DETECTOR_RULES === 'undefined') {
+    setTimeout(function() {
+      run();
+    }, 1000);
+    return;
+  }
   var rules = getRuleForPage();
   if (!rules) {
     return;
