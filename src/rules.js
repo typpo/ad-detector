@@ -858,10 +858,14 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://www.thebolditalic.com/articles/6150-tomorrow-late-night-bart-could-be-even-closer',
       match: function() {
-        var elts = document.querySelectorAll('.copy p');
-        if (elts.length > 0) {
-          return elts[elts.length - 1].innerHTML.indexOf('was paid for by') > -1;
+        var elts = document.querySelectorAll('.tags ul li a');
+        for (var i=0; i < elts.length; i++) {
+          var elt = elts[i];
+          if (elt.innerHTML === 'Sponsored Story') {
+            return true;
+          }
         }
+        return false;
       },
     }
   ],
