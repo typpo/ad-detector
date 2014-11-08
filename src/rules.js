@@ -854,6 +854,17 @@ _window.AD_DETECTOR_RULES = {
       },
     }
   ],
+  'thebolditalic.com': [
+    {
+      example: 'http://www.thebolditalic.com/articles/6150-tomorrow-late-night-bart-could-be-even-closer',
+      match: function() {
+        var elts = document.querySelectorAll('.copy p');
+        if (elts.length > 0) {
+          return elts[elts.length - 1].innerHTML.indexOf('was paid for by') > -1;
+        }
+      },
+    }
+  ],
   'thedailybeast.com': [
     {
       example: 'http://www.thedailybeast.com/articles/2014/09/30/how-we-compute-flexible-hardware-required.html',
