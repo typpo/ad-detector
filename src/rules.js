@@ -863,6 +863,18 @@ _window.AD_DETECTOR_RULES = {
           return elts[elts.length - 1].innerHTML.indexOf('was paid for by') > -1;
         }
       },
+    },
+    {
+      example: 'http://www.thebolditalic.com/articles/6220-plumb-a-company-for-all-you-notebook-lovers',
+      match: function() {
+        var elts = document.querySelectorAll('.tags li');
+        for (var i=0; i < elts.length; i++) {
+          if (elts[i].innerHTML.indexOf('Sponsored') > -1) {
+            return true;
+          }
+        }
+        return false;
+      },
     }
   ],
   'thedailybeast.com': [
