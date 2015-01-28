@@ -130,14 +130,14 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://www.buzzfeed.com/bravo/ways-to-up-your-online-dating-game',
       match: function() {
-        var elts = document.getElementsByClassName('author_title');
+        var elts = document.getElementsByClassName('byline__title');
         if (elts.length > 0) {
           return elts[0].innerHTML.indexOf('Brand Publisher') > -1;
         }
         return false;
       },
       getSponsor: function() {
-        var elts = document.querySelectorAll('[rel="author"]');
+        var elts = document.getElementsByClassName('byline__author');
         if (elts.length > 0) {
           return elts[0].innerHTML.trim();
         }
