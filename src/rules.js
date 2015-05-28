@@ -932,7 +932,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://www.theverge.com/sponsored/intel-future-is-now',
       match: function() {
-        return urlContains('/sponsored/');
+        return urlContains('/sponsored/') || selectorAppears('h3.sbnu-sponsored-title-bar');
       },
     }
   ],
