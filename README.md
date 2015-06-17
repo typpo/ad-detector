@@ -16,7 +16,7 @@ Start by running `./setup_hardlinks`.
 
 The hardlinks connect generic code in `src/` to the proper locations in browser-specific subdirectories (browsers won't follow symlinks).  To make changes to injected code, you only need to edit files under `src/`.
 
-Next, run the extension locally in your browser of choice.  For Chrome, go to chrome://extensions, enable developer mode, and load the `chrome/` directory.  For Firefox, set up your sdk and run `cfx run` in the `firefox/` directory.
+Next, run the extension locally in your browser of choice.  For Chrome, go to chrome://extensions, enable developer mode, and load the `chrome/` directory.  For Firefox, set up your [sdk](https://developer.mozilla.org/en-US/Add-ons/SDK/Tutorials/Installation) and run `cfx run` in the `firefox/` directory.
 
 ## Testing
 
