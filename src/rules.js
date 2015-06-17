@@ -403,9 +403,9 @@ _window.AD_DETECTOR_RULES = {
   ],
   'inc.com': [
     {
-      example: 'http://www.inc.com/theupsstore/index.html',
+      example: 'http://www.inc.com/theupsstore',
       match: function() {
-        return selectorAppears('#cobrand');
+        return classAppears('cobrand-logo');
       },
     }
   ],
