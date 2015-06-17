@@ -504,7 +504,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://mic.com/articles/96860/two-engineers-have-created-the-doll-every-young-girl-should-be-playing-with',
       match: function() {
-        return selectorAppears('article section .spon-image');
+        return classAppears('sponsor-greybar');
       },
     },
   ],
