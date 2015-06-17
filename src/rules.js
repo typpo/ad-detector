@@ -90,7 +90,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://www.bloomberg.com/native/article/?mvi=8a0a327343df4ca0b503d03a93deebd2',
       match: function() {
-        return urlContains('/native/');
+        return urlContains('/sponsor/');
       },
     }
   ],
