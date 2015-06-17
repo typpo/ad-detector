@@ -106,11 +106,14 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://business.financialpost.com/2013/06/26/a-joint-venture-with-capp-oil-industry-set-to-grow/?__lsa=95bf-d411',
       match: function() {
-        return selectorContains('#npContentMain .big-sponsored-label', 'Sponsored');
-      },
-      getSponsor: function() {
-        return document.querySelector('.big-sponsored-label').textContent
-            .replace('Sponsored by ', '');
+        var elts = document.querySelectorAll('a[rel="tag"]');
+        for (var i=0; i < elts.length; i++) {
+          var elt = elts[i];
+          if (elt.innerHTML.indexOf('Sponsored') > -1) {
+            return true;
+          }
+        }
+        return false;
       },
     },
   ],
