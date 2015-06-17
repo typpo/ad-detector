@@ -1077,6 +1077,12 @@ _window.AD_DETECTOR_RULES = {
       match: function() {
         return urlContains('/partners/');
       },
+    },
+    {
+      example: 'http://www.wired.com/2015/03/10-ways-worlds-first-open-server-architecture-disruptive/',
+      match: function() {
+        return classAppears('sponsor-title');
+      },
     }
   ],
   'xojane.com': [
