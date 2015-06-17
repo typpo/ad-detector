@@ -717,7 +717,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://qz.com/241614/reducing-indias-dependence-on-foreign-oil-and-gas/',
       match: function() {
-        return selectorContains('.view #items .kicker', 'Sponsor Content');
+        return selectorAppears('.article .sponsor-label');
       },
     },
   ],
@@ -908,15 +908,14 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://www.theonion.com/sponsored/woman-going-to-take-quick-break-after-filling-out,85/',
       match: function() {
-        return document.getElementById('sponsored-box') !== null;
+        return selectorAppears('.sponsored-by .sponsor-name');
       },
       getSponsor: function() {
-        var elts = document.querySelectorAll('#sponsor-explanation-text h1');
+        var elts = document.querySelectorAll('.sponsored-by a figure img');
         if (elts.length < 1) {
           return null;
         }
-        var text = elts[0].lastChild.textContent;
-        return text.slice(3, text.lastIndexOf('·') - 1);
+        return elts[0].getAttribute('alt');
       },
     },
   ],

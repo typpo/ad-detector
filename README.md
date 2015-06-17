@@ -18,6 +18,10 @@ The hardlinks connect generic code in `src/` to the proper locations in browser-
 
 Next, run the extension locally in your browser of choice.  For Chrome, go to chrome://extensions, enable developer mode, and load the `chrome/` directory.  For Firefox, set up your sdk and run `cfx run` in the `firefox/` directory.
 
+## Testing
+
+The tests rely on `casperjs` and `phantomjs`.  You should `npm install -g` these before running `test/testHarness.js`.
+
 ## Contributing
 
 I value contributions.  Looking for an easy way to get involved?  Add a [rule](https://github.com/typpo/ad-detector/blob/master/src/rules.js) for a site currently not covered by AdDetector, or check out the issues page.  Please open pull requests on this Github repository.
