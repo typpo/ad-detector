@@ -552,7 +552,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://www.newsweek.com/10-best-personal-injury-attorneys',
       match: function() {
-        return classAppears('sponsored-insight');
+        return classContains('block-ibtmedia-special-item', 'Sponsor');
       },
     },
   ],
