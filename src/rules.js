@@ -1065,9 +1065,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://www.washingtonpost.com/sf/brand-connect/wp/enterprise/one-year-later-a-commitment-renewed/',
       match: function() {
-        // TODO Can also check for WP Brand Connect in URL, "left title-bar", or in title
-        return selectorContains('.bylines .byline .byline-title',
-                                'Sponsor Generated Content');
+        return urlContains('/brand-connect/');
       },
     }
   ],
