@@ -288,10 +288,10 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://www.foodnetwork.com/recipes/orange-sorbet-recipe.html?COUPON=07-0094-01&bid=847241',
       match: function() {
-        return selectorContains('.lead-overview .copyright', 'Sponsor Recipe');
+        return selectorContains('.media .copyright', 'Sponsor Recipe');
       },
       getSponsor: function() {
-        return document.querySelector('.lead-overview .copyright').textContent
+        return document.querySelector('.media .copyright').textContent
             .replace('Sponsor Recipe Courtesy of ', '');
       },
     },
