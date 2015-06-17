@@ -59,10 +59,10 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://betabeat.com/2013/03/vote-for-your-favorite-startups-the-pitch-lerer-ventures-softbank-capital/',
       match: function() {
-        return classContains('rubric-block', 'Sponsored by');
+        return classContains('entry-teaser', 'Sponsored by');
       },
       getSponsor: function() {
-        var elt = document.querySelector('.rubric-block a');
+        var elt = document.querySelector('.entry-teaser');
         return elt ? elt.innerHTML.replace('Sponsored by ', '') : null;
       }
     }
@@ -581,6 +581,18 @@ _window.AD_DETECTOR_RULES = {
         return elt ? elt.innerHTML.replace('Content sponsored by ', '') : null;
       },
     },
+  ],
+  'observer.com': [
+    {
+      example: 'http://observer.com/2013/03/vote-for-your-favorite-startups-the-pitch-lerer-ventures-softbank-capital/',
+      match: function() {
+        return classContains('entry-teaser', 'Sponsored by');
+      },
+      getSponsor: function() {
+        var elt = document.querySelector('.entry-teaser');
+        return elt ? elt.innerHTML.replace('Sponsored by ', '') : null;
+      }
+    }
   ],
   'on.aol.com': [
     {
