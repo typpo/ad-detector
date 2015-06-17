@@ -280,7 +280,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://www.foodrepublic.com/2014/05/15/whimsical-grilling-leif-hedendal',
       match: function() {
-        return selectorContains('.node-type-story .rubric a', 'Sponsored Post');
+        return selectorContains('.article-tax a', 'Sponsored Post');
       },
     },
   ],
