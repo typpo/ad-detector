@@ -265,6 +265,8 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  // FoodAndWine removed their sponsor tags as of 2015-06-17.
+  /*
   'foodandwine.com': [
     {
       example: 'http://www.foodandwine.com/articles/lindt-falls-best-wine-pairings',
@@ -273,6 +275,7 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  */
   'foodrepublic.com': [
     {
       example: 'http://www.foodrepublic.com/2014/05/15/whimsical-grilling-leif-hedendal',
