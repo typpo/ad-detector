@@ -139,6 +139,7 @@ _window.AD_DETECTOR_RULES = {
         }
         return false;
       },
+    },
   ],
   'businessinsider.com': [
     {
