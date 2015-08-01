@@ -131,20 +131,13 @@ _window.AD_DETECTOR_RULES = {
   ],
   'buzzfeed.com': [
     {
-      example: 'http://www.buzzfeed.com/bravo/ways-to-up-your-online-dating-game',
+      example: 'http://www.buzzfeed.com/veronica0811/10-fast-growing-slack-communitieshangouts-you-sho-nvja',
       match: function() {
         var elts = document.getElementsByClassName('byline__title');
         if (elts.length > 0) {
           return elts[0].innerHTML.indexOf('Brand Publisher') > -1;
         }
         return false;
-      },
-      getSponsor: function() {
-        var elts = document.getElementsByClassName('byline__author');
-        if (elts.length > 0) {
-          return elts[0].innerHTML.trim();
-        }
-        return null;
       },
     },
   ],
