@@ -501,6 +501,14 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'mirror.co.uk': [
+    {
+      example: 'http://www.mirror.co.uk/features/how-make-accident-work-claim-4184171',
+      match: function() {
+        return selectorAppears('meta[property="og:tags"][content*="Advertorial"]');
+      },
+    },
+  ],
   'money.msn.com': [
     {
       example: 'http://money.msn.com/small-business-smarts/transit-connect.aspx',
