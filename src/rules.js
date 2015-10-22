@@ -923,8 +923,16 @@ _window.AD_DETECTOR_RULES = {
   'theguardian.com': [
     {
       example: 'http://www.theguardian.com/sustainable-business/2014/jul/18/ben-jerry-turn-ice-cream-into-energy',
+      // a more recent example:
+      // http://www.theguardian.com/global-development-professionals-network/2015/mar/27/democracy-behind-bars-11-opposition-leaders-facing-jail-or-death
       match: function() {
-        return selectorAppears('meta[property="article:tag"][content*="partner zone"]');
+        return selectorAppears('meta[property="article:tag"][content*="partner zone"]') ||
+            selectorAppears('.ad-slot--paid-for-badge');
+      },
+      getSponsor: function() {
+        var el = document.querySelector('article [data-sponsor]');
+        var txt = el ? el.getAttribute('data-sponsor') : "";
+        return txt ? txt : null;
       },
     }
   ],
