@@ -849,6 +849,19 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'telegraph.co.uk': [
+    {
+     //telegraph has a few different forms of sponsored article
+      example: 'http://www.telegraph.co.uk/beauty/hair-nails/youthful-vitality/what-have-you-gained-with-age/',
+      // http://www.telegraph.co.uk/sponsored/motoring/diesel-performance/11882401/look-after-classic-car.html
+      // http://www.telegraph.co.uk/film/pan/pan-costumes/
+      match: function() {
+        return (urlContains('/sponsored/') && urlContains('.html')) ||
+            selectorAppears('meta[name="DCSext.sponsored"][content="true"]') ||
+            selectorAppears('meta[name="tmgads.businessSegment"][content="sponsored"]');
+      },
+    },
+  ],
   'theatlantic.com': [
     {
       example: 'http://www.theatlantic.com/sponsored/ibm-big-data/big-data-grows-new-role-emerges-chief-data-officer/102/',
