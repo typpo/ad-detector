@@ -501,6 +501,14 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'mirror.co.uk': [
+    {
+      example: 'http://www.mirror.co.uk/features/how-make-accident-work-claim-4184171',
+      match: function() {
+        return selectorAppears('meta[property="og:tags"][content*="Advertorial"]');
+      },
+    },
+  ],
   'money.msn.com': [
     {
       example: 'http://money.msn.com/small-business-smarts/transit-connect.aspx',
@@ -849,6 +857,19 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'telegraph.co.uk': [
+    {
+     //telegraph has a few different forms of sponsored article
+      example: 'http://www.telegraph.co.uk/beauty/hair-nails/youthful-vitality/what-have-you-gained-with-age/',
+      // http://www.telegraph.co.uk/sponsored/motoring/diesel-performance/11882401/look-after-classic-car.html
+      // http://www.telegraph.co.uk/film/pan/pan-costumes/
+      match: function() {
+        return (urlContains('/sponsored/') && urlContains('.html')) ||
+            selectorAppears('meta[name="DCSext.sponsored"][content="true"]') ||
+            selectorAppears('meta[name="tmgads.businessSegment"][content="sponsored"]');
+      },
+    },
+  ],
   'theatlantic.com': [
     {
       example: 'http://www.theatlantic.com/sponsored/ibm-big-data/big-data-grows-new-role-emerges-chief-data-officer/102/',
@@ -902,8 +923,16 @@ _window.AD_DETECTOR_RULES = {
   'theguardian.com': [
     {
       example: 'http://www.theguardian.com/sustainable-business/2014/jul/18/ben-jerry-turn-ice-cream-into-energy',
+      // a more recent example:
+      // http://www.theguardian.com/global-development-professionals-network/2015/mar/27/democracy-behind-bars-11-opposition-leaders-facing-jail-or-death
       match: function() {
-        return selectorAppears('meta[property="article:tag"][content*="partner zone"]');
+        return selectorAppears('meta[property="article:tag"][content*="partner zone"]') ||
+            selectorAppears('.ad-slot--paid-for-badge');
+      },
+      getSponsor: function() {
+        var el = document.querySelector('article [data-sponsor]');
+        var txt = el ? el.getAttribute('data-sponsor') : "";
+        return txt ? txt : null;
       },
     }
   ],
