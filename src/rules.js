@@ -931,7 +931,7 @@ _window.AD_DETECTOR_RULES = {
       },
       getSponsor: function() {
         var el = document.querySelector('article [data-sponsor]');
-        var txt = el ? el.getAttribute('data-sponsor') : "";
+        var txt = el ? el.getAttribute('data-sponsor') : '';
         return txt ? txt : null;
       },
     }
