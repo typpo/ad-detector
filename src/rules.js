@@ -781,6 +781,14 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'rtlz.nl': [
+    {
+      example: 'http://www.rtlz.nl/sponsored-special/sneller-diagnose-dankzij-toepassing-dvd-technologie',
+      match: function() {
+        return urlContains('-advertorial') || urlContains('/sponsored-special/');
+      },
+    },
+  ],
   'screen.yahoo.com': [
     {
       example: 'https://screen.yahoo.com/callaway-talks-phil-mickelson-u-140000616.html',
