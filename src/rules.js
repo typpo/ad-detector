@@ -398,7 +398,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://www.inc.com/theupsstore',
       match: function() {
-        return classAppears('cobrand-logo');
+        return classAppears('inc-logo-and-partner-logo');
       },
     }
   ],
@@ -553,7 +553,8 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://www.newsweek.com/10-best-personal-injury-attorneys',
       match: function() {
-        return classContains('block-ibtmedia-special-item', 'Sponsor');
+        return classContains('block-ibtmedia-special-item', 'Sponsor') &&
+            !classAppears('home-featured');
       },
     },
   ],
@@ -907,7 +908,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://www.thebolditalic.com/articles/6220-plumb-a-company-for-all-you-notebook-lovers',
       match: function() {
-        var elts = document.querySelectorAll('.tags li');
+        var elts = document.querySelectorAll('.article-credits-tag');
         for (var i=0; i < elts.length; i++) {
           if (elts[i].innerHTML.indexOf('Sponsored') > -1) {
             return true;
@@ -948,7 +949,13 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://www.thekitchn.com/recipe-paradise-punch-recipes-from-the-kitchn-205103',
       match: function() {
-        return classAppears('sponsored-post');
+        var elts = document.querySelectorAll('.muted-link');
+        for (var i=0; i < elts.length; i++) {
+          if (elts[i].innerHTML.indexOf('Sponsored') > -1) {
+            return true;
+          }
+        }
+        return false;
       },
     }
   ],
@@ -1032,7 +1039,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'https://www.upworthy.com/30-seconds-of-women-over-apologizing-followed-by-30-seconds-of-them-so-destroying-that-stereotype',
       match: function() {
-        return selectorAppears('.sponsored-section #promoted-header');
+        return selectorContains('.story-teaser__type', 'Promoted Post');
       },
     },
   ],
@@ -1056,7 +1063,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://venturebeat.com/2013/01/31/create-and-design-websites-on-your-pc-with-coffeecup-vb-store/',
       match: function() {
-        return classAppears('partnered-post') && !classAppears('entry-summary');
+        return classAppears('partnered-post') && !classAppears('story-river');
       },
       getSponsor: function() {
         var elts = document.getElementsByClassName('the-author');
@@ -1071,7 +1078,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://www.vice.com/ketelone/modern-craftsmen-gregory-laketek',
       match: function() {
-        return urlContains('/ketelone/');
+        return urlContains('/ketelone');
       },
     }
   ],
