@@ -558,6 +558,22 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'nrcq.nl': [
+   {
+     example: 'http://www.nrcq.nl/advertorial/vergeet-wie-ik-ben-dat-moet-van-de-nieuwe-privacywet',
+     match: function() {
+       return urlContains('/advertorial/');
+     },
+     getSponsor: function() {
+       var paidElts = document.getElementsByClassName('article__advertorial-indicator');
+       if (paidElts.length < 1) {
+         return null;
+       }
+       var sponsor = paidElts[0].href.split("/").pop();
+       return sponsor.charAt(0).toUpperCase() + sponsor.slice(1);
+     },
+   },
+ ],
   'nu.nl': [
     {
       example: 'http://www.nu.nl/advertorial-elektrisch-rijden/3845090/tankstation-vervangen-thuis-opladen.html',
