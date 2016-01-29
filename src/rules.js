@@ -64,8 +64,8 @@ _window.AD_DETECTOR_RULES = {
       getSponsor: function() {
         var elt = document.querySelector('.entry-teaser');
         return elt ? elt.innerHTML.replace('Sponsored by ', '') : null;
-      }
-    }
+      },
+    },
   ],
   'bizjournals.com': [
     {
@@ -75,8 +75,8 @@ _window.AD_DETECTOR_RULES = {
       },
       getSponsor: function() {
         return document.querySelector('.article__byline').firstChild.textContent.replace('Sponsor post from ', '');
-      }
-    }
+      },
+    },
   ],
   'blogs.vancouversun.com': [
     {
@@ -84,7 +84,7 @@ _window.AD_DETECTOR_RULES = {
       match: function() {
         return classAppears('tag-sponsored');
       },
-    }
+    },
   ],
   'bloomberg.com': [
     {
@@ -92,7 +92,7 @@ _window.AD_DETECTOR_RULES = {
       match: function() {
         return urlContains('/sponsor/');
       },
-    }
+    },
   ],
   'bostonmagazine.com': [
     {
@@ -100,14 +100,14 @@ _window.AD_DETECTOR_RULES = {
       match: function() {
         return urlContains('/sponsor-content/');
       },
-    }
+    },
   ],
   'business.financialpost.com': [
     {
       example: 'http://business.financialpost.com/2013/06/26/a-joint-venture-with-capp-oil-industry-set-to-grow/?__lsa=95bf-d411',
       match: function() {
         var elts = document.querySelectorAll('a[rel="tag"]');
-        for (var i=0; i < elts.length; i++) {
+        for (var i = 0; i < elts.length; i++) {
           var elt = elts[i];
           if (elt.innerHTML.indexOf('Sponsored') > -1) {
             return true;
@@ -196,7 +196,6 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://www.denverpost.com/tablehome/ci_14493215?source=rss',
       match: function() {
-        var elt = document.getElementById('articleOverline');
         return urlContains('/sponsored') || titleContains('SPONSORED') ||
           selectorContains('#articleOverline', 'SPONSORED CONTENT');
       },
@@ -212,8 +211,8 @@ _window.AD_DETECTOR_RULES = {
       getSponsor: function() {
         var elt = document.querySelector('[rel="author"]');
         return elt ? elt.innerHTML : null;
-      }
-    }
+      },
+    },
   ],
   'dnainfo.com': [
     {
@@ -310,8 +309,8 @@ _window.AD_DETECTOR_RULES = {
       getSponsor: function() {
         var elt = document.querySelector('.sponsor-name span');
         return elt ? elt.innerHTML : null;
-      }
-    }
+      },
+    },
   ],
   'gawker.com': [
     {
@@ -334,7 +333,7 @@ _window.AD_DETECTOR_RULES = {
       example: 'http://gigaom.com/2014/08/19/are-we-there-yet-it-teams-share-plans-and-concerns-with-saas/',
       match: function() {
         var elts = document.querySelectorAll('meta[property="article:tag"]');
-        for (var i=0; i < elts.length; i++) {
+        for (var i = 0; i < elts.length; i++) {
           var elt = elts[i];
           if (elt.getAttribute('content') === 'Sponsored Content') {
             return true;
@@ -351,7 +350,7 @@ _window.AD_DETECTOR_RULES = {
         // This method of detection could be prone to false positives.
         return selectorContains('.post', 'sponsored by');
       },
-    }
+    },
   ],
   'gothamist.com': [
     {
@@ -383,8 +382,8 @@ _window.AD_DETECTOR_RULES = {
           return null;
         }
         return paidElts[0].innerHTML.replace('Presented by ', '');
-      }
-    }
+      },
+    },
   ],
   'hollywoodlife.com': [
     {
@@ -392,7 +391,7 @@ _window.AD_DETECTOR_RULES = {
       match: function() {
         return document.title.toLowerCase().indexOf('sponsored by') > -1;
       },
-    }
+    },
   ],
   'inc.com': [
     {
@@ -400,7 +399,7 @@ _window.AD_DETECTOR_RULES = {
       match: function() {
         return classAppears('inc-logo-and-partner-logo');
       },
-    }
+    },
   ],
   'innovationinsights.wired.com': [
     {
@@ -412,7 +411,7 @@ _window.AD_DETECTOR_RULES = {
       getSponsor: function() {
         return 'IBM';
       },
-    }
+    },
   ],
   'latimes.com': [
     {
@@ -558,6 +557,22 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'nrcq.nl': [
+   {
+     example: 'http://www.nrcq.nl/advertorial/vergeet-wie-ik-ben-dat-moet-van-de-nieuwe-privacywet',
+     match: function() {
+       return urlContains('/advertorial/');
+     },
+     getSponsor: function() {
+       var paidElts = document.getElementsByClassName('article__advertorial-indicator');
+       if (paidElts.length < 1) {
+         return null;
+       }
+       var sponsor = paidElts[0].href.split("/").pop();
+       return sponsor.charAt(0).toUpperCase() + sponsor.slice(1);
+     },
+   },
+  ],
   'nu.nl': [
     {
       example: 'http://www.nu.nl/advertorial-elektrisch-rijden/3845090/tankstation-vervangen-thuis-opladen.html',
@@ -599,8 +614,8 @@ _window.AD_DETECTOR_RULES = {
       getSponsor: function() {
         var elt = document.querySelector('.entry-teaser');
         return elt ? elt.innerHTML.replace('Sponsored by ', '') : null;
-      }
-    }
+      },
+    },
   ],
   'on.aol.com': [
     {
@@ -837,7 +852,7 @@ _window.AD_DETECTOR_RULES = {
       example: 'http://www.stylemepretty.com/2014/08/19/alexandra-grecco-a-discount-a-giveaway-2/',
       match: function() {
         var elts = document.querySelectorAll('a[rel="tag"]');
-        for (var i=0; i < elts.length; i++) {
+        for (var i = 0; i < elts.length; i++) {
           var elt = elts[i];
           if (elt.innerHTML === 'Sponsored Posts') {
             return true;
@@ -868,7 +883,7 @@ _window.AD_DETECTOR_RULES = {
   ],
   'telegraph.co.uk': [
     {
-     //telegraph has a few different forms of sponsored article
+     // telegraph has a few different forms of sponsored article
       example: 'http://www.telegraph.co.uk/beauty/hair-nails/youthful-vitality/what-have-you-gained-with-age/',
       // http://www.telegraph.co.uk/sponsored/motoring/diesel-performance/11882401/look-after-classic-car.html
       // http://www.telegraph.co.uk/film/pan/pan-costumes/
@@ -893,7 +908,7 @@ _window.AD_DETECTOR_RULES = {
       match: function() {
         return classAppears('tag-sponsored-content');
       },
-    }
+    },
   ],
   'thebolditalic.com': [
     {
@@ -909,14 +924,14 @@ _window.AD_DETECTOR_RULES = {
       example: 'http://www.thebolditalic.com/articles/6220-plumb-a-company-for-all-you-notebook-lovers',
       match: function() {
         var elts = document.querySelectorAll('.article-credits-tag');
-        for (var i=0; i < elts.length; i++) {
+        for (var i = 0; i < elts.length; i++) {
           if (elts[i].innerHTML.indexOf('Sponsored') > -1) {
             return true;
           }
         }
         return false;
       },
-    }
+    },
   ],
   'thedailybeast.com': [
     {
@@ -927,7 +942,7 @@ _window.AD_DETECTOR_RULES = {
       getSponsor: function() {
         return document.querySelector('article[data-index="1"] .article-main-content .section').textContent;
       },
-    }
+    },
   ],
   'theguardian.com': [
     {
@@ -943,21 +958,21 @@ _window.AD_DETECTOR_RULES = {
         var txt = el ? el.getAttribute('data-sponsor') : '';
         return txt ? txt : null;
       },
-    }
+    },
   ],
   'thekitchn.com': [
     {
       example: 'http://www.thekitchn.com/recipe-paradise-punch-recipes-from-the-kitchn-205103',
       match: function() {
         var elts = document.querySelectorAll('.muted-link');
-        for (var i=0; i < elts.length; i++) {
+        for (var i = 0; i < elts.length; i++) {
           if (elts[i].innerHTML.indexOf('Sponsored') > -1) {
             return true;
           }
         }
         return false;
       },
-    }
+    },
   ],
   'theonion.com': [
     {
@@ -980,7 +995,7 @@ _window.AD_DETECTOR_RULES = {
       match: function() {
         return urlContains('/sponsored_sections/');
       },
-    }
+    },
   ],
   'theverge.com': [
     {
@@ -988,7 +1003,7 @@ _window.AD_DETECTOR_RULES = {
       match: function() {
         return urlContains('/sponsored/') || selectorAppears('h3.sbnu-sponsored-title-bar');
       },
-    }
+    },
   ],
   'thewrap.com': [
     {
@@ -996,7 +1011,7 @@ _window.AD_DETECTOR_RULES = {
       match: function() {
         return urlContains('sponsored-story');
       },
-    }
+    },
   ],
   'thoughtcatalog.com': [
     {
@@ -1004,7 +1019,7 @@ _window.AD_DETECTOR_RULES = {
       match: function() {
         return urlContains('/thought-catalog-sponsored-posts/');
       },
-    }
+    },
   ],
   // Omitting this for now, because paid articles are always included with
   // normal articles, making them very difficult to detect (unless we check on
@@ -1025,7 +1040,7 @@ _window.AD_DETECTOR_RULES = {
       match: function() {
         return urlContains('/sponsoredarticles/');
       },
-    }
+    },
   ],
   'tweakers.net': [
     {
@@ -1033,7 +1048,7 @@ _window.AD_DETECTOR_RULES = {
       match: function() {
         return urlContains('/advertorials/');
       },
-    }
+    },
   ],
   'upworthy.com': [
     {
@@ -1071,8 +1086,8 @@ _window.AD_DETECTOR_RULES = {
           return null;
         }
         return elts[0].innerHTML;
-      }
-    }
+      },
+    },
   ],
   'vice.com': [
     {
@@ -1080,7 +1095,7 @@ _window.AD_DETECTOR_RULES = {
       match: function() {
         return urlContains('/ketelone');
       },
-    }
+    },
   ],
   'volkskrant.nl': [
     {
@@ -1096,7 +1111,7 @@ _window.AD_DETECTOR_RULES = {
       match: function() {
         return urlContains('/sponsored/');
       },
-    }
+    },
   ],
   'washingtonpost.com': [
     {
@@ -1104,7 +1119,7 @@ _window.AD_DETECTOR_RULES = {
       match: function() {
         return urlContains('/brand-connect/');
       },
-    }
+    },
   ],
   'wired.com': [
     {
@@ -1118,7 +1133,7 @@ _window.AD_DETECTOR_RULES = {
       match: function() {
         return classAppears('sponsor-title');
       },
-    }
+    },
   ],
   'xojane.com': [
     {
@@ -1126,7 +1141,7 @@ _window.AD_DETECTOR_RULES = {
       match: function() {
         return urlContains('/we-were-paid-for-this/');
       },
-    }
+    },
   ],
   'yahoo.com': [
     {
@@ -1134,7 +1149,7 @@ _window.AD_DETECTOR_RULES = {
       match: function() {
         return selectorContains('.byline .attribution-name', 'Brought to you by');
       },
-    }
+    },
   ],
   // For testing:
   'ianww.com': [
@@ -1151,7 +1166,6 @@ _window.AD_DETECTOR_RULES = {
     },
   ],
 };
-
 
 /** Common utility functions **/
 function urlContains(s) {
@@ -1172,10 +1186,10 @@ function selectorAppears(selector) {
 
 function classContains(className, text) {
   var elts = document.getElementsByClassName(className);
-  return elts.length > 0 ? elts[0].innerHTML.indexOf(text) > -1 : false
+  return elts.length > 0 ? elts[0].innerHTML.indexOf(text) > -1 : false;
 }
 
 function selectorContains(selector, text) {
   var elt = document.querySelector(selector);
-  return elt ? elt.innerHTML.indexOf(text) > -1 : false
+  return elt ? elt.innerHTML.indexOf(text) > -1 : false;
 }
