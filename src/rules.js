@@ -974,6 +974,18 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'thenextweb.com': [
+    {
+      example: 'http://thenextweb.com/insider/2016/01/26/designing-for-a-better-tomorrow/',
+      match: function() {
+        return classAppears('paid-post-notice');
+      },
+      getSponsor: function() {
+        var elt = document.querySelector('.paid-post-notice a');
+        return elt ? elt.innerHTML : null;
+      },
+    },
+  ],
   'theonion.com': [
     {
       example: 'http://www.theonion.com/sponsored/woman-going-to-take-quick-break-after-filling-out,85/',
