@@ -1163,6 +1163,30 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  // French media:
+  'lesinrocks.com': [
+    {
+      example: 'http://www.lesinrocks.com/2015/11/30/contenu-partenaire/fallout-4-test-immense-excitant-libre-11789448/',
+      match: function() {
+        if (urlContains('/contenu-partenaire/')) {
+		return true;
+	}
+	if (selectorContains('#block-article .name[itemprop=author]', 'Contenu Partenaire')) {
+		return true;
+	}
+	return false;
+      },
+      getSponsor: function() {
+	      var re = /En partenariat avec ([^.]+)\./;
+	      var article_footer = document.querySelector('#block-article .details .content > p:last-child');
+	      if (!article_footer) {
+		      return null;
+	      }
+	      var result = article_footer.innerHTML.match(re);
+	      return result && result[1];
+      },
+    },
+  ],
   // For testing:
   'ianww.com': [
     {
