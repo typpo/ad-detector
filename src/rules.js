@@ -1187,6 +1187,23 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'premiere.fr': [
+    {
+      example: 'http://www.premiere.fr/Cinema/News-Cinema/Oscars-2016-Pourquoi-Spotlight-peut-mettre-tout-le-monde-d-accord',
+      match: function() {
+        return selectorContains('.pane-content div[about]:first-child .content>div:nth-last-child(2) p:last-child', 'sponsorisé par');
+      },
+      getSponsor: function() {
+        var re = /sponsorisé par ([^.]+)\./;
+        var article_footer = document.querySelector('.pane-content div[about]:first-child .content>div:nth-last-child(2) p:last-child');
+        if (!article_footer) {
+          return null;
+        }
+        var result = article_footer.innerHTML.match(re);
+        return result && result[1];
+      }
+    },
+  ],
   // For testing:
   'ianww.com': [
     {
