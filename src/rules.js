@@ -1168,13 +1168,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://www.lesinrocks.com/2015/11/30/contenu-partenaire/fallout-4-test-immense-excitant-libre-11789448/',
       match: function() {
-        if (urlContains('/contenu-partenaire/')) {
-          return true;
-        }
-        if (selectorContains('#block-article .name[itemprop=author]', 'Contenu Partenaire')) {
-          return true;
-        }
-        return false;
+	return selectorAppears('meta[name=author][content="Contenu Partenaire"]')
       },
       getSponsor: function() {
         var re = /En partenariat avec ([^.]+)\./;
