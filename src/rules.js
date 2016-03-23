@@ -71,7 +71,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://www.bizjournals.com/houston/bizwomen/channels/pnc/2014/08/for-businesses-green-is-here-to-stay.html',
       match: function() {
-        return selectorContains('.article .meta-item', 'Sponsor Content');
+        return selectorContains('.article .meta-item', 'Paid Content');
       },
       getSponsor: function() {
         return document.querySelector('.article__byline').firstChild.textContent.replace('Sponsor post from ', '');
