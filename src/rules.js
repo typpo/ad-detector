@@ -194,7 +194,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://deadspin.com/5969545/exclusive-could-this-be-chris-pauls-secret-twin-brother',
       match: function() {
-        return selectorAppears('.content-wrapper .sponsored-label');
+        return classAppears('meta__label meta__label--sponsored');
       },
     },
   ],
@@ -293,6 +293,12 @@ _window.AD_DETECTOR_RULES = {
             .replace('Sponsor Recipe Courtesy of ', '');
       },
     },
+    {
+      example: 'http://www.foodnetwork.com/sponsored/sweepstakes/chopped-at-home-challenge/main.html',
+      match: function() {
+        return urlContains('/sponsored/');
+      },
+    },
   ],
   'forbes.com': [
     {
@@ -380,10 +386,10 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://www.huffingtonpost.com/2014/07/24/things-you-never-knew-about-tequila_n_5589092.html',
       match: function() {
-        return classAppears('sponsor_wrapper');
+        return classAppears('entry-eyebrow--sponsor');
       },
       getSponsor: function() {
-        var paidElts = document.querySelectorAll('.sponsor_wrapper .sponsor_title_wrapper span');
+        var paidElts = document.querySelectorAll('.entry-eyebrow--sponsor');
         if (paidElts.length < 1) {
           return null;
         }
