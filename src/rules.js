@@ -164,6 +164,12 @@ _window.AD_DETECTOR_RULES = {
         return urlContains('/brandpublishing/');
       },
     },
+    {
+      example: 'http://www.chicagotribune.com/suburbs/advertising/seniorhousingguide/',
+      match: function() {
+        return urlContains('/advertising/');
+      },
+    },
   ],
   'content.time.com': [
     {
