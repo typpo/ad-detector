@@ -443,6 +443,14 @@ _window.AD_DETECTOR_RULES = {
     },
   ],
   */
+  'lesinrocks.com': [
+    {
+      example: 'http://www.lesinrocks.com/2015/11/30/contenu-partenaire/fallout-4-test-immense-excitant-libre-11789448/',
+      match: function() {
+        return urlContains('/contenu-partenaire/');
+      },
+    },
+  ],
   'mashable.com': [
     {
       example: 'http://mashable.com/2013/03/12/dog-mans-best-friend/',
