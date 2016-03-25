@@ -503,6 +503,14 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'melty.fr': [
+    {
+      example: 'http://www.melty.fr/l-interview-exclusive-de-m4gic-a229985.html',
+      match: function() {
+        return (document.querySelector('footer').textContent.indexOf('Cet article est sponsorisé') == 0);
+      },
+    },
+  ],
   'messages.people.com': [
     {
       example: 'http://messages.people.com/sponsored-post-jetblue/',
