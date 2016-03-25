@@ -526,7 +526,7 @@ _window.AD_DETECTOR_RULES = {
     {
       example: 'http://www.melty.fr/l-interview-exclusive-de-m4gic-a229985.html',
       match: function() {
-        return (document.querySelector('footer').textContent.indexOf('Cet article est sponsorisé') == 0);
+        return (document.querySelector('footer').textContent.indexOf('Cet article est sponsorisé') === 0);
       },
     },
   ],
