@@ -324,6 +324,17 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'gameblog.fr': [
+    {
+      example: 'http://www.gameblog.fr/news/54232-ps4-ps3-ps-vita-100-jeux-jusqu-a-80-durant-la-paris-games-we',
+      match: function() {
+        return (document.querySelector('header#gbArticleHeader').textContent.indexOf("Sponsorisé") > -1);
+      },
+      getSponsor: function() {
+        return document.querySelector('header#gbArticleHeader > div > a').textContent;
+      },
+    },
+  ]
   'gawker.com': [
     {
       example: 'http://gawker.com/5974129/how-to-transform-into-a-total-nerd-babe/',
