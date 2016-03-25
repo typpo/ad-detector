@@ -436,6 +436,14 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'jeuxvideo.com': [
+    {
+      example: 'http://www.jeuxvideo.com/news/447185/la-paris-games-week-se-fete-en-promo-sur-le-playstation-store.htm',
+      match: function() {
+        return selectorAppears('img.trogne-editeur[alt="Avatar Sponso"]');
+      },
+    },
+  ],
   'latimes.com': [
     {
       example: 'http://www.latimes.com/brandpublishing/localplus/ucsandiego/la-ss-ucsd-playhouse-dto-story.html',
