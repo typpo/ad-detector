@@ -102,6 +102,14 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'bright.nl': [
+    {
+      example: 'https://www.bright.nl/sponsored-special/bright-lezers-geven-de-meedenkende-klantenservice-van-xs4all-een-84',
+      match: function() {
+        return urlContains('/sponsored-special/');
+      },
+    },
+  ],
   'business.financialpost.com': [
     {
       example: 'http://business.financialpost.com/2013/06/26/a-joint-venture-with-capp-oil-industry-set-to-grow/?__lsa=95bf-d411',
@@ -402,6 +410,14 @@ _window.AD_DETECTOR_RULES = {
       example: 'http://hollywoodlife.com/pics/britney-spears-femme-fatale-tour-photos/',
       match: function() {
         return document.title.toLowerCase().indexOf('sponsored by') > -1;
+      },
+    },
+  ],
+  'iculture.nl': [
+    {
+      example: 'http://www.iculture.nl/promo/eindoordeel-xs4all-iculture-insiders/',
+      match: function() {
+        return urlContains('/promo/');
       },
     },
   ],
