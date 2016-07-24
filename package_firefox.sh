@@ -7,7 +7,7 @@ pushd `dirname $0`
 
 pushd firefox
 jpm xpi
-mv 19b15b40-23f9-11e4-8c21-0800200c9a66@jetpack-*.xpi ../ad-detector.xpi
+mv *.xpi ../ad-detector.xpi
 popd
 
 popd
