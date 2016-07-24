@@ -5,6 +5,6 @@
   "description": "Detect news articles paid for by sponsors.",
   "author": "Ian Webster",
   "license": "MIT",
-  "version": "0.20",
+  "version": "0.21",
   "main": "lib/main.js"
 }
