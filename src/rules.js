@@ -556,6 +556,14 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'motherboard.vice.com': [
+    {
+      example: 'https://motherboard.vice.com/read/the-swedish-fish-theory',
+      match: function() {
+        return classAppears('ad-sponsored-by');
+      },
+    },
+  ],
   'msnbc.com': [
     {
       example: 'http://www.msnbc.com/msnbc/landfill-fuels-frances-energy-future',
