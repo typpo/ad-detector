@@ -39,6 +39,14 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'androidworld.nl': [
+    {
+      example: 'http://androidworld.nl/business/xs4all-klantenservice-getest-het-eindoordeel-en-kantoorbezoek/',
+      match: function() {
+        return selectorContains('.card-content__meta a', 'Advertorial');
+      }
+    }
+  ],
   'arstechnica.com': [
     {
       example: 'http://arstechnica.com/sponsored/it-consumption-model-interactive-infographic/',
