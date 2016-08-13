@@ -340,6 +340,17 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'gameblog.fr': [
+    {
+      example: 'http://www.gameblog.fr/news/54232-ps4-ps3-ps-vita-100-jeux-jusqu-a-80-durant-la-paris-games-we',
+      match: function() {
+        return (document.querySelector('header#gbArticleHeader').textContent.indexOf("Sponsorisé") > -1);
+      },
+      getSponsor: function() {
+        return document.querySelector('header#gbArticleHeader > div > a').textContent;
+      },
+    },
+  ]
   'gawker.com': [
     {
       example: 'http://gawker.com/5974129/how-to-transform-into-a-total-nerd-babe/',
@@ -449,6 +460,14 @@ _window.AD_DETECTOR_RULES = {
       },
     },
   ],
+  'jeuxvideo.com': [
+    {
+      example: 'http://www.jeuxvideo.com/news/447185/la-paris-games-week-se-fete-en-promo-sur-le-playstation-store.htm',
+      match: function() {
+        return selectorAppears('img.trogne-editeur[alt="Avatar Sponso"]');
+      },
+    },
+  ],
   'latimes.com': [
     {
       example: 'http://www.latimes.com/brandpublishing/localplus/ucsandiego/la-ss-ucsd-playhouse-dto-story.html',
@@ -467,6 +486,14 @@ _window.AD_DETECTOR_RULES = {
     },
   ],
   */
+  'lesinrocks.com': [
+    {
+      example: 'http://www.lesinrocks.com/2015/11/30/contenu-partenaire/fallout-4-test-immense-excitant-libre-11789448/',
+      match: function() {
+        return urlContains('/contenu-partenaire/');
+      },
+    },
+  ],
   'mashable.com': [
     {
       example: 'http://mashable.com/2013/03/12/dog-mans-best-friend/',
@@ -516,6 +543,14 @@ _window.AD_DETECTOR_RULES = {
       },
       getSponsor: function() {
         return 'BMW';
+      },
+    },
+  ],
+  'melty.fr': [
+    {
+      example: 'http://www.melty.fr/l-interview-exclusive-de-m4gic-a229985.html',
+      match: function() {
+        return (document.querySelector('footer').textContent.indexOf('Cet article est sponsorisé') === 0);
       },
     },
   ],
@@ -775,6 +810,30 @@ _window.AD_DETECTOR_RULES = {
           return null;
         }
         return paidElts[0].innerHTML.replace('Annoncørindhold fra ', '');
+      },
+    },
+  ],
+  'premiere.fr': [
+    {
+      example: 'http://www.premiere.fr/Cinema/News-Cinema/Oscars-2016-Pourquoi-Spotlight-peut-mettre-tout-le-monde-d-accord',
+      match: function() {
+        var elts = document.querySelectorAll('div.field-item > p > em');
+        for (var i = 0; i < elts.length; i++) {
+          var elt = elts[i];
+          if (elt.textContent.indexOf('Cet article est sponsorisé par ') === 0) {
+            return true;
+          }
+        }
+        return false;
+      },
+      getSponsor: function() {
+        var elts = document.querySelectorAll('div.field-item > p > em');
+        for (var i = 0; i < elts.length; i++) {
+          var elt = elts[i];
+          if (elt.textContent.indexOf('Cet article est sponsorisé par ') === 0) {
+            return elt.textContent.substr(31);
+          }
+        }
       },
     },
   ],
