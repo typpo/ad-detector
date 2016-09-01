@@ -157,17 +157,23 @@
   width: 100%;
   height: 50px;
 
-  background-color: #800000;
-  border-bottom: 2px solid #411010;
-  color: white;
+  background-color: rgb(85, 102, 116);
+  border-bottom: 2px solid rgb(65, 16, 16);
+  color: #f1f1f1;
 
-  font-size: 25px;
+  font-size: 20px;
   text-align: center;
-  padding-top: 25px;
+  padding-top: 30px;
   z-index: 2147483647;
 
   cursor: pointer;
 
   /* TODO: Set values for all the inherit types. */
   font-family: arial, sans-serif;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  
+  
 }
